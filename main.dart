@@ -65,47 +65,448 @@ class RoundedButton extends StatelessWidget {
 
 
 //import 'package:flutter/gestures.dart';
+//import 'dart:html';
+
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'dart:math';
+
+//import 'package:flutter/services.dart';
 //import 'package:url_launcher/url_launcher.dart';
 
 
 void main() {
-  runApp(MyApp());
+  runApp( HealthApp());
 }
 
-class MyApp extends StatelessWidget {
-
-  
+/*class HealthApp extends StatelessWidget {
   @override
-  
   Widget build(BuildContext context) {
     return MaterialApp(
-      
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('VitaBoost'),
+          title: Text('Your App Title'),
+        ),
+        body: AppsBottomNavigationBar(), // Add your bottom navigation bar here
+      ),
+    );
+  }
+}*/
+class HealthApp extends StatelessWidget {
+   HealthApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Health Tips'),
+          backgroundColor: Colors.amber[800],
+        ),
+        //body: SafeArea(child: HomeScreen()),
+        body: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top), // Add top padding
+          child: const AppsBottomNavigationBar(),
         ),
         
-        body: HomeScreen(),        
       ),
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class AppsBottomNavigationBar extends StatefulWidget {
+  const AppsBottomNavigationBar({super.key});
+
+  @override
+  State<AppsBottomNavigationBar> createState() =>
+      _BottomNavigationBarState();
+}
+
+class _BottomNavigationBarState extends State<AppsBottomNavigationBar> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
+    return Scaffold(
+      /*appBar: AppBar(
+        title: const Text('Health Tips'),
+        backgroundColor: Colors.amber[800],
+      ),*/
+      body: SafeArea( // Wrap the content with SafeArea
+        child: Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Colors.purple,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.health_and_safety),
+            label: 'Health A-Z',
+            backgroundColor: Colors.purple,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.more),
+            label: 'More',
+            backgroundColor: Colors.purple,
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        
+        selectedItemColor: Colors.amber[800],
+        selectedIconTheme: const IconThemeData(size: 30),
+        //unselectedIconTheme: const IconThemeData(size: 24),
+        onTap: _onItemTapped,
+      ),
+    );
+  }
+
+  List<Widget> _widgetOptions = [
+    SafeArea(child: HomeScreen()), // Wrap with SafeArea
+    SafeArea(child: HealthAtoZ()), // Wrap with SafeArea
+    SafeArea(child: HealthAtoZ()), // Wrap with SafeArea
+  ];
+}
+
+
+
+/*class MyTabController extends StatefulWidget {
+  const MyTabController({Key? key}) : super(key: key);
+
+  @override
+  MyTabControllerState createState() => MyTabControllerState();
+}
+class MyTabControllerState extends State<MyTabController>
+  with SingleTickerProviderStateMixin {
+  // We need a TabController to control the selected tab programmatically
+  late final _tabController = TabController(length: 2, vsync: this);
+
+  @override
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: (){
+              //Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchBarApp()));
+            }, 
+            icon: Icon(Icons.search)),
+        ],
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: const <Widget>[
+            Tab(
+              icon: Icon(Icons.home, color: Colors.white),
+              text: 'HOME',
+            ),
+            Tab(
+              icon: Icon(Icons.health_and_safety, color: Colors.white),
+              text: 'Health A-Z',
+            ),            
+          ],
+        ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
         children: [
-          VitaminButton(),
-          BloodPressureButton(),
-          // Add more buttons for other categories as needed
+          HomeScreen(
+            //onPressed: () => _tabController.index = 1,
+          ),
+          HealthAtoZ(
+            // onNext: () => _tabController.index = 2,
+          ),   
         ],
       ),
     );
+  } 
+}*/
+
+/*class SearchBarApp extends StatefulWidget {
+  const SearchBarApp({super.key});
+
+  @override
+  State<SearchBarApp> createState() => _SearchBarAppState();
+}
+
+class _SearchBarAppState extends State<SearchBarApp> {
+  bool isDark = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData themeData = ThemeData(
+        useMaterial3: true,
+        brightness: isDark ? Brightness.dark : Brightness.light);
+
+    return MaterialApp(
+      theme: themeData,
+      home: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SearchAnchor(
+              builder: (BuildContext context, SearchController controller) {
+            return SearchBar(
+              controller: controller,
+              padding: const MaterialStatePropertyAll<EdgeInsets>(
+                  EdgeInsets.symmetric(horizontal: 16.0)),
+              onTap: () {
+                controller.openView();
+              },
+              onChanged: (_) {
+                controller.openView();
+              },
+              leading: const Icon(Icons.search),
+              trailing: <Widget>[
+                Tooltip(
+                  message: 'Change brightness mode',
+                  child: IconButton(
+                    isSelected: isDark,
+                    onPressed: () {
+                      setState(() {
+                        isDark = !isDark;
+                      });
+                    },
+                    icon: const Icon(Icons.wb_sunny_outlined),
+                    selectedIcon: const Icon(Icons.brightness_2_outlined),
+                  ),
+                )
+              ],
+            );
+          }, suggestionsBuilder:
+                  (BuildContext context, SearchController controller) {
+            return List<ListTile>.generate(5, (int index) {
+              final String item = 'item $index';
+              return ListTile(
+                title: Text(item),
+                onTap: () {
+                  setState(() {
+                    controller.closeView(item);
+                  });
+                },
+              );
+            });
+          }),
+        ),
+      ),
+    );
+  }
+}*/
+
+
+class HealthAtoZ extends StatelessWidget {
+  final List<String> letters = List.generate(26, (index) => String.fromCharCode('A'.codeUnitAt(0) + index));
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      padding: EdgeInsets.all(8.0),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 5, // 5 columns
+      ),
+      itemCount: letters.length,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: EdgeInsets.all(6.0),
+          child: RoundedButton(
+          text: letters[index],
+          onPressed: () {
+            if(letters[index]=='A'){            
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthA()));
+            }
+            // Add your navigation logic here to open a new page for each button.
+            // You can use Navigator.push to navigate to a new page.
+            //Navigator.push(context, MaterialPageRoute(builder: (context) => NewPage(letter: letters[index]));
+          },
+          buttonColor: Colors.amber,
+          ),
+        );
+        
+      },
+    );
+  }
+}
+  
+class HealthA extends StatelessWidget{
+  const HealthA({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health A-Z'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(4.0),
+                      child: Container(
+                        height: 40,
+                        width: 60,
+                        child: OutlinedButton(
+                          onPressed: () {
+                          // Add your button 1 action here
+                          },
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: Colors.transparent, // Change the background color
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)                          
+                            ),
+                          ),
+                          child: Text(
+                            'Abdominal Pain\n(পেটে ব্যথা)',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              
+                            ),
+                          ),
+                        ),
+                      ),                      
+                    ),                    
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(4.0),
+                      child: Container(
+                        height: 40,
+                        width: 60,
+                        child: OutlinedButton(
+                          onPressed: () {
+                          // Add your button 1 action here
+                          },
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: Colors.transparent, // Change the background color
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)                          
+                            ),
+                          ),
+                          child: Text(
+                            'Acidity\n(গ্যাস্ট্রিক)',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              
+                            ),
+                          ),
+                        ),
+                      ),                      
+                    ),
+                    
+                  ),
+                ],
+              ),
+              // Add more rows of buttons for class HealthA as needed
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+  
+
+/*class HealthSection extends StatelessWidget {
+  final String name;
+
+  HealthSection({required this.name});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100, // Adjust the height as needed
+      color: Colors.blue, // Change the section's background color
+      alignment: Alignment.center,
+      child: Text(
+        'Health Section $name',
+        style: TextStyle(fontSize: 20, color: Colors.white),
+      ),
+    );
+  }
+}*/
+
+/*class HealthAtoZ extends StatelessWidget{
+  const HealthAtoZ({super.key});
+
+   @override
+  Widget build(BuildContext context) {
+    return ListView(
+      scrollDirection: Axis.vertical, // Vertical scrolling
+      children: [
+        GridView.builder(
+          shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 5,
+          ),
+          itemCount: 26,
+          itemBuilder: (context, index) {
+            final alphabet = String.fromCharCode('A'.codeUnitAt(0) + index);
+            return RoundedButton(
+              text: alphabet,
+              onPressed: () {
+                // Define different actions for each button
+                switch (alphabet) {
+                  case 'A':
+                    // Action for button A
+                    print('Button A pressed');
+                    // Add your specific action for A
+                    break;
+                  case 'B':
+                    // Action for button B
+                    print('Button B pressed');
+                    // Add your specific action for B
+                    break;
+                  // Add cases for other buttons (C, D, etc.) as needed
+                }
+              },
+              buttonColor: Colors.purple,
+            );
+          },
+        ),
+      ],
+    );
+  }
+}*/
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+          VitaminButton(),
+          BloodPressureButton(),
+          //AppsBottomNavigationBar(),
+          // Add more buttons for other categories as needed
+          ],
+        ),
+      ),
+    );
+    
   }
 }
 
@@ -113,32 +514,46 @@ class VitaminButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      /*title: RoundedButton(
-        text: "Vitamin",
-        onPressed: () {
-          // Handle what happens when the "Vitamin" button is pressed
-        },
-        buttonColor: Colors.pink,
-      ),*/
-      title: MenuButton(
-        text: "Vitamin",
-        onPressed: () {
-          // Handle what happens when the "Vitamin" button is pressed
-        },
-        buttonColor: Colors.green,
+      title: Card(
+        elevation: 4, // Add elevation for a card-like appearance
+        margin: EdgeInsets.all(8.0), // Add margin for spacing
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              tileColor: Colors.cyan.withOpacity(0.6), // Transparent background color
+              title: Text(
+                "Vitamin",
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.black,
+                ),
+              ),
+              onTap: () {
+                // Handle what happens when the "Vitamin" card is pressed
+              },
+            ),
+            Image.asset(
+              'assets/bg_image.jpg', // Replace with your image path
+              width: double.infinity, // Set the image width to fill the card
+              height: 200.0, // Set the image height as needed
+              fit: BoxFit.cover, // Adjust the fit as needed
+            ),
+          ],
+        ),
       ),
       children: [
-          SubcategoryListOfVitamin(),
-        ],
+        SubcategoryListOfVitamin(),
+      ],
     );
   }
 }
+
 
 class SubcategoryListOfVitamin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200.0, // Adjust the height as needed
+      height: 100.0, // Adjust the height as needed
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
@@ -171,7 +586,44 @@ class SubcategoryListOfVitamin extends StatelessWidget {
   }
 }
 
-class BloodPressureButton extends StatelessWidget{
+class BloodPressureButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpansionTile(
+      title: Card(
+        elevation: 4, // Add elevation for a card-like appearance
+        margin: EdgeInsets.all(8.0), // Add margin for spacing
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              tileColor: Colors.cyan.withOpacity(0.6), // Transparent background color
+              title: Text(
+                "Blood Pressure",
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.black,
+                ),
+              ),
+              onTap: () {
+                // Handle what happens when the "Vitamin" card is pressed
+              },
+            ),
+            Image.asset(
+              'assets/bg_image.jpg', // Replace with your image path
+              width: double.infinity, // Set the image width to fill the card
+              height: 200.0, // Set the image height as needed
+              fit: BoxFit.cover, // Adjust the fit as needed
+            ),
+          ],
+        ),
+      ),
+      children: [
+        SubcategoryListOfVitamin(),
+      ],
+    );
+  }
+}
+/*class BloodPressureButton extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
@@ -194,7 +646,7 @@ class BloodPressureButton extends StatelessWidget{
     );
   }
 
-}
+}*/
 ////
 /*class VitaminButton extends StatelessWidget {
   const VitaminButton({super.key});
@@ -222,10 +674,10 @@ class RoundedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Transform.rotate(
-      angle: -pi / 6.0, // Rotate each button by 30 degrees (pi/6)
+      angle: -pi / 90.0, // Rotate each button by 30 degrees (pi/6)
       child: Container(
-        width: 100.0, // Set the desired width
-        height: 100.0, // Set the same value as width to make it circular
+        width: 80.0, // Set the desired width
+        height: 80.0, // Set the same value as width to make it circular
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
@@ -239,7 +691,7 @@ class RoundedButton extends StatelessWidget {
                 text, 
                 style: TextStyle(
                   fontSize: 20, 
-                  color: Colors.white,   
+                  color: Colors.black87,   
                 ),       
               ),
             ),                       
