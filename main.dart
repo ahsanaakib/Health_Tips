@@ -1484,16 +1484,19 @@ class HealthAtoZ extends StatelessWidget {
               onPressed: () {
                 if(letters[index]=='A'){            
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthA()));
-              }
-             
-              else if(letters[index]=='B'){
+              }else if(letters[index]=='B'){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthB()));
-              }
-              else if(letters[index]=='C'){
+              }else if(letters[index]=='C'){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthC()));
-              }
-              else if(letters[index]=='D'){
+              }else if(letters[index]=='D'){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthD()));
+              }else if(letters[index]=='E'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthE()));
+              }else if(letters[index]=='F'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthF()));
+              }
+              else if(letters[index]=='O'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthO()));
               }
                 // Your navigation logic here
               },
@@ -2173,6 +2176,535 @@ class _DengueFeverState extends State<DengueFever> {
               child: const SelectableText.rich(
                 TextSpan(
                   text: '\n[Reference: https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue#:~:text=Dengue%20(break%2Dbone%20fever),body%20aches%2C%20nausea%20and%20rash.',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
+
+class HealthE extends StatelessWidget {
+  final List<String> categories = [
+    'Ear Infection',    
+    
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health E'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>EarInfection()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class EarInfection extends StatefulWidget {
+  @override
+  _EarInfectionState createState() => _EarInfectionState();
+}
+
+class _EarInfectionState extends State<EarInfection> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Ear Infection'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: '\nSymptoms\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'The onset of signs and symptoms of ear infection is usually rapid.\n'                      
+                      '\nSigns and symptoms common in children include:\n'
+                      '--> Ear pain, especially when lying down\n'
+                      '--> Tugging or pulling at an ear\n'
+                      '--> Trouble sleeping\n'
+                      '--> Crying more than usual\n'
+                      '--> Fussiness\n'
+                      '--> Trouble hearing or responding to sounds\n'
+                      '--> Loss of balance\n'
+                      '--> Fever of 100 F (38 C) or higher\n'
+                      '--> Drainage of fluid from the ear\n'
+                      '--> Headache\n'
+                      '--> Loss of appetite\n'
+                      '\nCommon signs and symptoms in adults include:\n'
+                      '--> Ear pain\n'
+                      '--> Drainage of fluid from the ear\n'
+                      '--> Trouble hearing\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ), 
+                    TextSpan(
+                      text: '\nCauses',
+                      style: TextStyle(
+                        fontSize: 20
+                      )
+                    ),
+                    TextSpan(
+                      text: '\n\nAn ear infection is caused by a bacterium or virus in the middle ear. This infection often results from another illness — cold, flu or allergy — that causes congestion and swelling of the nasal passages, throat and eustachian tubes.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      )
+                    ),
+                    TextSpan(
+                      text: '\nPrevention\n'
+                    ),
+                    TextSpan(
+                      text:
+                      'The following tips may reduce the risk of developing ear infections:\n'                      
+                      '\n--> Prevent common colds and other illnesses. Teach your children to wash their hands frequently and thoroughly and to not share eating and drinking utensils. Teach your children to cough or sneeze into their elbow. If possible, limit the time your child spends in group child care. A child care setting with fewer children may help. Try to keep your child home from child care or school when ill.\n'
+                      '--> Avoid secondhand smoke. Make sure that no one smokes in your home. Away from home, stay in smoke-free environments.\n'
+                      '--> Breast-feed your baby. If possible, breast-feed your baby for at least six months. Breast milk contains antibodies that may offer protection from ear infections.\n'
+                      '--> If you bottle-feed, hold your baby in an upright position. Avoid propping a bottle in your babys mouth while he or she is lying down. Dont put bottles in the crib with your baby.\n'
+                      '--> Talk to your doctor about vaccinations. Ask your doctor about what vaccinations are appropriate for your child. Seasonal flu shots, pneumococcal and other bacterial vaccines may help prevent ear infections.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ), 
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/ear-infections/symptoms-causes/syc-20351616',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
+
+class HealthF extends StatelessWidget {
+  final List<String> categories = [
+    'Frozen Shoulder',    
+    
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health F'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>FrozenShoulder()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class FrozenShoulder extends StatefulWidget {
+  @override
+  _FrozenShoulderState createState() => _FrozenShoulderState();
+}
+
+class _FrozenShoulderState extends State<FrozenShoulder> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Frozen Shoulder'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: '\nSymptoms\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'Frozen shoulder typically develops slowly in three stages.\n'
+                      '--> Freezing stage. Any movement of the shoulder causes pain, and the shoulders ability to move becomes limited. This stage lasts from 2 to 9 months.\n'
+                      '--> Frozen stage. Pain might lessen during this stage. However, the shoulder becomes stiffer. Using it becomes more difficult. This stage lasts from 4 to 12 months.\n'
+                      '--> Thawing stage. The shoulders ability to move begins to improve. This stage lasts from 5 to 24 months.\n'
+                      'For some people, the pain worsens at night, sometimes disrupting sleep.\n'                    
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ), 
+                    TextSpan(
+                      text: '\nCauses',
+                      style: TextStyle(
+                        fontSize: 20
+                      )
+                    ),
+                    TextSpan(
+                      text: '\n\nThe shoulder joint is enclosed in a capsule of connective tissue. Frozen shoulder occurs when this capsule thickens and tightens around the shoulder joint, restricting its movement.\n'
+                      '\nIts unclear why this happens to some people. But its more likely to happen after keeping a shoulder still for a long period, such as after surgery or an arm fracture.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      )
+                    ),
+                    TextSpan(
+                      text: '\nPrevention\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nOne of the most common causes of frozen shoulder is not moving a shoulder while recovering from a shoulder injury, broken arm or stroke. If you have had an injury that makes it difficult to move your shoulder, talk to your health care provider about exercises that can help you maintain your ability to move your shoulder joint.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ), 
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/ear-infections/symptoms-causes/syc-20351616',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
+
+class HealthO extends StatelessWidget {
+  final List<String> categories = [
+    'Oral Health',    
+    
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health O'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>OralHealth()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+class OralHealth extends StatefulWidget {
+  @override
+  _OralHealthState createState() => _OralHealthState();
+}
+
+class _OralHealthState extends State<OralHealth> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Oral Health'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: '\nHow can I protect my oral health?\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'To protect your oral health, practice good oral hygiene daily.\n'                      
+                      '\n--> Brush your teeth at least twice a day for two minutes each time. Use a soft-bristled brush and fluoride toothpaste.\n'
+                      '--> Floss daily.\n'
+                      '--> Use mouthwash to remove food particles left after brushing and flossing.\n'
+                      '--> Eat a healthy diet and limit sugary food and drinks.\n'
+                      '--> Replace your toothbrush every three to four months, or sooner if bristles are splayed or worn.\n'
+                      '--> Schedule regular dental checkups and cleanings.\n'
+                      '--> Avoid tobacco use.\n'
+                      '\nAlso, contact your dentist as soon as an oral health problem arises. Taking care of your oral health is an investment in your overall health.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),  
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/healthy-lifestyle/adult-health/in-depth/dental/art-20047475',
                 ), 
               ),
             ), 
