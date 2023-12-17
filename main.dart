@@ -1494,6 +1494,18 @@ class HealthAtoZ extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthE()));
               }else if(letters[index]=='F'){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthF()));
+              }else if(letters[index]=='H'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthH()));
+              }else if(letters[index]=='I'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthI()));
+              }else if(letters[index]=='K'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthK()));
+              }else if(letters[index]=='L'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthL()));
+              }else if(letters[index]=='M'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthM()));
+              }else if(letters[index]=='N'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthN()));
               }
               else if(letters[index]=='O'){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthO()));
@@ -2549,13 +2561,1067 @@ class _FrozenShoulderState extends State<FrozenShoulder> {
               padding: const EdgeInsets.all(8.0),
               child: const SelectableText.rich(
                 TextSpan(
-                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/ear-infections/symptoms-causes/syc-20351616',
+                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/frozen-shoulder/symptoms-causes/syc-20372684#:~:text=Frozen%20shoulder%20occurs%20when%20the,within%201%20to%203%20years.',
                 ), 
               ),
             ), 
           ],
         ),
       ),     
+    );
+  }
+}
+
+class HealthH extends StatelessWidget {
+  final List<String> categories = [
+    'Heart Attack',    
+    
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health O'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>HeartAttack()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+class HeartAttack extends StatefulWidget {
+  @override
+  _HeartAttackState createState() => _HeartAttackState();
+}
+
+class _HeartAttackState extends State<HeartAttack> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Heart Attack'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: 'Symptoms\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'Common heart attack symptoms include:\n'
+                      '\n--> Chest pain that may feel like pressure, tightness, pain, squeezing or aching\n'
+                      '--> Pain or discomfort that spreads to the shoulder, arm, back, neck, jaw, teeth or sometimes the upper belly\n'
+                      '--> Cold sweat\n'
+                      '--> Fatigue\n'
+                      '--> Heartburn or indigestion\n'
+                      '--> Lightheadedness or sudden dizziness\n'
+                      '--> Nausea\n'
+                      '--> Shortness of breath\n'
+                      '\nWomen may have atypical symptoms such as brief or sharp pain felt in the neck, arm or back. Sometimes, the first symptom sign of a heart attack is sudden cardiac arrest.\n'
+                      '\nSome heart attacks strike suddenly. But many people have warning signs and symptoms hours, days or weeks in advance. Chest pain or pressure (angina) that keeps happening and doesnt go away with rest may be an early warning sign. Angina is caused by a temporary decrease in blood flow to the heart.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nCauses\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nCoronary artery disease causes most heart attacks. In coronary artery disease, one or more of the heart (coronary) arteries are blocked. This is usually due to cholesterol-containing deposits called plaques. Plaques can narrow the arteries, reducing blood flow to the heart.\n'
+                      '\nIf a plaque breaks open, it can cause a blood clot in the heart.\n'
+                      '\nA heart attack may be caused by a complete or partial blockage of a heart (coronary) artery. One way to classify heart attacks is whether an electrocardiogram (ECG or EKG) shows some specific changes (ST elevation) that require emergency invasive treatment. Your health care provider may use electrocardiogram (ECG) results to describe these types of heart attacks.\n'
+                      '--> An acute complete blockage of a medium or large heart artery usually means you have had an ST elevation myocardial infarction (STEMI).\n'
+                      '--> A partial blockage often means you have had a non-ST elevation myocardial infarction (NSTEMI). However, some people with non-ST elevation myocardial infarction (NSTEMI) have a total blockage.\n'
+                      '\nNot all heart attacks are caused by blocked arteries. Other causes include:\n'
+                      '\n--> Coronary artery spasm. This is a severe squeezing of a blood vessel thats not blocked. The artery generally has cholesterol plaques or there is early hardening of the vessel due to smoking or other risk factors. Other names for coronary artery spasms are Prinzmetals angina, vasospastic angina or variant angina.\n'
+                      '--> Certain infections. COVID-19 and other viral infections may cause damage to the heart muscle.\n'
+                      '--> Spontaneous coronary artery dissection (SCAD). This life-threatening condition is caused by a tear inside a heart artery.\n'                      
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nPrevention\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nIts never too late to take steps to prevent a heart attack — even if you have already had one. Here are ways to prevent a heart attack.\n'
+                      '\n--> Follow a healthy lifestyle. Dont smoke. Maintain a healthy weight with a heart-healthy diet. Get regular exercise and manage stress.\n'
+                      '--> Manage other health conditions. Certain conditions, such as high blood pressure and diabetes, can increase the risk of heart attacks. Ask your health care provider how often you need checkups.\n'
+                      '--> Take medications as directed. Your health care provider may prescribe drugs to protect and improve your heart health.\n'
+                      '\nIts also a good idea to learn CPR properly so you can help someone who is having a heart attack. Consider taking an accredited first-aid training course, including CPR and how to use an automated external defibrillator (AED).'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/heart-attack/symptoms-causes/syc-20373106',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
+
+class HealthI extends StatelessWidget {
+  final List<String> categories = [
+    'Insomnia',    
+    
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health O'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Insomnia()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class Insomnia extends StatefulWidget {
+  @override
+  _InsomniaState createState() => _InsomniaState();
+}
+
+class _InsomniaState extends State<Insomnia> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Insomnia'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: 'Symptoms\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'Insomnia symptoms may include:\n'
+                      '\n--> Difficulty falling asleep at night\n'
+                      '--> Waking up during the night\n'
+                      '--> Waking up too early\n'
+                      '--> Not feeling well-rested after a nights sleep\n'
+                      '--> Daytime tiredness or sleepiness\n'
+                      '--> Irritability, depression or anxiety\n'                      
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nCauses\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nCommon causes of chronic insomnia include:\n'                      
+                      '--> Stress. Concerns about work, school, health, finances or family can keep your mind active at night, making it difficult to sleep. Stressful life events or trauma — such as the death or illness of a loved one, divorce, or a job loss — also may lead to insomnia.\n'
+                      '--> Travel or work schedule. Your circadian rhythms act as an internal clock, guiding such things as your sleep-wake cycle, metabolism and body temperature. Disrupting your bodys circadian rhythms can lead to insomnia. Causes include jet lag from traveling across multiple time zones, working a late or early shift, or frequently changing shifts.\n'
+                      '--> Poor sleep habits. Poor sleep habits include an irregular bedtime schedule, naps, stimulating activities before bed, an uncomfortable sleep environment, and using your bed for work, eating or watching TV. Computers, TVs, video games, smartphones or other screens just before bed can interfere with your sleep cycle.\n'
+                      '--> Eating too much late in the evening. Having a light snack before bedtime is OK, but eating too much may cause you to feel physically uncomfortable while lying down. Many people also experience heartburn, a backflow of acid and food from the stomach into the esophagus after eating, which may keep you awake.\n'
+                      '\nAdditional common causes of insomnia include:\n'
+                      '\n--> Mental health disorders. Anxiety disorders, such as post-traumatic stress disorder, may disrupt your sleep. Awakening too early can be a sign of depression. Insomnia often occurs with other mental health disorders as well.\n'
+                      '--> Medications. Many prescription drugs can interfere with sleep, such as certain antidepressants and medications for asthma or blood pressure. Many over-the-counter medications — such as some pain medications, allergy and cold medications, and weight-loss products — contain caffeine and other stimulants that can disrupt sleep.\n'
+                      '--> Medical conditions. Examples of conditions linked with insomnia include chronic pain, cancer, diabetes, heart disease, asthma, gastroesophageal reflux disease (GERD), overactive thyroid, Parkinsons disease and Alzheimers disease.\n'
+                      '--> Sleep-related disorders. Sleep apnea causes you to stop breathing periodically throughout the night, interrupting your sleep. Restless legs syndrome causes unpleasant sensations in your legs and an almost irresistible desire to move them, which may prevent you from falling asleep.\n'
+                      '--> Caffeine, nicotine and alcohol. Coffee, tea, cola and other caffeinated drinks are stimulants. Drinking them in the late afternoon or evening can keep you from falling asleep at night. Nicotine in tobacco products is another stimulant that can interfere with sleep. Alcohol may help you fall asleep, but it prevents deeper stages of sleep and often causes awakening in the middle of the night.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nPrevention\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nGood sleep habits can help prevent insomnia and promote sound sleep:\n'
+                      '\n--> Keep your bedtime and wake time consistent from day to day, including weekends.\n'
+                      '--> Stay active — regular activity helps promote a good nights sleep.\n'
+                      '--> Check your medications to see if they may contribute to insomnia.\n'
+                      '--> Avoid or limit naps.\n'
+                      '--> Avoid or limit caffeine and alcohol, and dont use nicotine.\n'
+                      '--> Avoid large meals and beverages before bedtime.\n'
+                      '--> Make your bedroom comfortable for sleep and only use it for sex or sleep.\n'
+                      '--> Create a relaxing bedtime ritual, such as taking a warm bath, reading or listening to soft music.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/insomnia/symptoms-causes/syc-20355167',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
+
+class HealthK extends StatelessWidget {
+  final List<String> categories = [
+    'Kidney Disease',    
+    
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health O'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>KidneyDisease()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class KidneyDisease extends StatefulWidget {
+  @override
+  _KidneyDiseaseState createState() => _KidneyDiseaseState();
+}
+
+class _KidneyDiseaseState extends State<KidneyDisease> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Kidney Disease'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: 'Symptoms\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'Signs and symptoms of chronic kidney disease develop over time if kidney damage progresses slowly. Loss of kidney function can cause a buildup of fluid or body waste or electrolyte problems. Depending on how severe it is, loss of kidney function can cause:\n'
+                      '\n--> Nausea\n'
+                      '--> Vomiting\n'
+                      '--> Loss of appetite\n'
+                      '--> Fatigue and weakness\n'
+                      '--> Sleep problems\n'
+                      '--> Urinating more or less\n'
+                      '--> Decreased mental sharpness\n'
+                      '--> Muscle cramps\n'
+                      '--> Swelling of feet and ankles\n'
+                      '--> Dry, itchy skin\n'
+                      '--> High blood pressure (hypertension) thats difficult to control\n'
+                      '--> Shortness of breath, if fluid builds up in the lungs\n'
+                      '--> Chest pain, if fluid builds up around the lining of the heart\n'
+                      '\nSigns and symptoms of kidney disease are often nonspecific. This means they can also be caused by other illnesses. Because your kidneys are able to make up for lost function, you might not develop signs and symptoms until irreversible damage has occurred.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nCauses\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nChronic kidney disease occurs when a disease or condition impairs kidney function, causing kidney damage to worsen over several months or years.\n'
+                      'Diseases and conditions that cause chronic kidney disease include:\n'
+                      '\n--> Type 1 or type 2 diabetes\n'
+                      '--> High blood pressure\n'
+                      '--> Glomerulonephritis (gloe-mer-u-low-nuh-FRY-tis), an inflammation of the kidneys filtering units (glomeruli)\n'
+                      '--> Interstitial nephritis (in-tur-STISH-ul nuh-FRY-tis), an inflammation of the kidneys tubules and surrounding structures\n'
+                      '--> Polycystic kidney disease or other inherited kidney diseases\n'
+                      '--> Prolonged obstruction of the urinary tract, from conditions such as enlarged prostate, kidney stones and some cancers\n'
+                      '--> Vesicoureteral (ves-ih-koe-yoo-REE-tur-ul) reflux, a condition that causes urine to back up into your kidneys\n'
+                      '--> Recurrent kidney infection, also called pyelonephritis (pie-uh-low-nuh-FRY-tis)\n'                      
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nPrevention\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nTo reduce your risk of developing kidney disease:\n'
+                      '\n--> Follow instructions on over-the-counter medications. When using nonprescription pain relievers, such as aspirin, ibuprofen (Advil, Motrin IB, others) and acetaminophen (Tylenol, others), follow the instructions on the package. Taking too many pain relievers for a long time could lead to kidney damage.\n'
+                      '--> Maintain a healthy weight. If you are at a healthy weight, maintain it by being physically active most days of the week. If you need to lose weight, talk with your doctor about strategies for healthy weight loss.\n'
+                      '--> Do not smoke. Cigarette smoking can damage your kidneys and make existing kidney damage worse. If you are a smoker, talk to your doctor about strategies for quitting. Support groups, counseling and medications can all help you to stop.\n'
+                      '--> Manage your medical conditions with your doctors help. If you have diseases or conditions that increase your risk of kidney disease, work with your doctor to control them. Ask your doctor about tests to look for signs of kidney damage.\n'                      
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/chronic-kidney-disease/symptoms-causes/syc-20354521',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
+
+class HealthL extends StatelessWidget {
+  final List<String> categories = [
+    'Low blood pressure (hypotension)',    
+    
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health L'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>LowBloodPressure()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class LowBloodPressure extends StatefulWidget {
+  @override
+  _LowBloodPressureState createState() => _LowBloodPressureState();
+}
+
+class _LowBloodPressureState extends State<LowBloodPressure> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Low blood pressure (hypotension)'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: 'Symptoms\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'Low blood pressure (hypotension) symptoms may include:\n'
+                      '\n--> Blurred or fading vision\n'
+                      '--> Dizziness or lightheadedness\n'
+                      '--> Fainting\n'
+                      '--> Fatigue\n'
+                      '--> Trouble concentrating\n'
+                      '--> Nausea\n'
+                      '\nFor some people, low blood pressure may be a sign of an underlying health condition, especially when it drops suddenly or occurs with symptoms.\n'
+                      '\nA sudden fall in blood pressure can be dangerous. A change of just 20 mm Hg — a drop from 110 mm Hg systolic to 90 mm Hg systolic, for example — can cause dizziness and fainting. And big drops, such as those caused by uncontrolled bleeding, severe infections or allergic reactions, can be life-threatening.\n'
+                      '\nExtreme low blood pressure can lead to a condition known as shock. Symptoms of shock include:\n'
+                      '\n--> Confusion, especially in older people\n'
+                      '--> Cold, clammy skin\n'
+                      '--> Decrease in skin coloration (pallor)\n'
+                      '--> Rapid, shallow breathing\n'
+                      '--> Weak and rapid pulse\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nCauses\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nBlood pressure is determined by the amount of blood the heart pumps and the amount of resistance to blood flow in the arteries. A blood pressure measurement is given in millimeters of mercury (mm Hg). It has two numbers:\n'
+                      '\n--> Systolic pressure. The first (upper) number is the pressure in the arteries when the heart beats.\n'
+                      '--> Diastolic pressure. The second (bottom) number is the pressure in the arteries when the heart rests between beats.\n'
+                      '\nThe American Heart Association categorizes ideal blood pressure as normal. An ideal blood pressure is usually lower than 120/80 mm Hg.\n'
+                      '\nBlood pressure varies throughout the day, depending on:\n'
+                      '\n--> Body position\n'
+                      '--> Breathing\n'
+                      '--> Food and drink\n'
+                      '--> Medications\n'
+                      '--> Physical condition\n'
+                      '--> Stress\n'
+                      '--> Time of day\n'
+                      '\nBlood pressure is usually lowest at night and rises sharply on waking. Certain health conditions and use of medications may cause low blood pressure.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nConditions that can cause low blood pressure\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nMedical conditions that can cause low blood pressure include:\n'
+                      '\n--> Pregnancy. Changes during pregnancy cause blood vessels to expand rapidly. The changes may cause blood pressure to drop. Low blood pressure is common in the first 24 weeks of pregnancy. Blood pressure usually returns to pre-pregnancy levels after giving birth.\n'
+                      '--> Heart and heart valve conditions. A heart attack, heart failure, heart valve disease and an extremely low heart rate (bradycardia) can cause low blood pressure.\n'
+                      '--> Hormone-related diseases (endocrine disorders). Conditions affecting the parathyroid or adrenal glands, such as Addisons disease, may cause blood pressure to drop. Low blood sugar (hypoglycemia) and, sometimes, diabetes also may lower blood pressure.\n'
+                      '--> Dehydration. When the body does not have enough water, the amount of blood in the body (blood volume) decreases. This can cause blood pressure to drop. Fever, vomiting, severe diarrhea, overuse of diuretics and strenuous exercise can lead to dehydration.\n'
+                      '--> Blood loss. Losing a lot of blood, such as from an injury or internal bleeding, also reduces blood volume, leading to a severe drop in blood pressure.\n'
+                      '--> Severe infection (septicemia). When an infection in the body enters the bloodstream, it can lead to a life-threatening drop in blood pressure called septic shock.\n'
+                      '--> Severe allergic reaction (anaphylaxis). Symptoms of a severe allergic reaction include a sudden and dramatic drop in blood pressure.\n'
+                      '--> Lack of nutrients in the diet. Low levels of vitamin B-12, folate and iron can keep the body from producing enough red blood cells (anemia), which can lead to low blood pressure.\n'                      
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nTreatment\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nLow blood pressure (hypotension) without symptoms or with only mild symptoms rarely requires treatment.\n'
+                      '\nIf low blood pressure is causing symptoms, the treatment depends on the cause. For instance, if medication causes low blood pressure, your health care provider may recommend changing or stopping the medication or lowering the dose. Do not change or stop taking your medication without first talking to your care provider.\n'
+                      '\nIf its not clear whats causing low blood pressure or no treatment exists, the goal is to raise blood pressure and reduce symptoms. Depending on age, health and the type of low blood pressure, there are several ways to do this:\n'
+                      '--> Use more salt. Experts usually recommend limiting salt (sodium) because it can raise blood pressure, sometimes dramatically. For people with low blood pressure, however, that can be a good thing. But too much sodium can lead to heart failure, especially in older adults. So its important to check with a health care provider before increasing salt.\n'
+                      '--> Drink more water. Fluids increase blood volume and help prevent dehydration, both of which are important in treating hypotension.\n'
+                      '--> Wear compression stockings. Also called support stockings, these elastic stockings are commonly used to relieve the pain and swelling of varicose veins. They improve blood flow from the legs to the heart. Some people tolerate elastic abdominal binders better than they do compression stockings.\n'
+                      '--> Medications. Several drugs are available to treat low blood pressure that occurs when standing up (orthostatic hypotension). For example, the drug fludrocortisone boosts blood volume. Its often used to treat orthostatic hypotension.'
+                      '\nIf you have long-term (chronic) orthostatic hypotension, midodrine (Orvaten) may be prescribed to raise standing blood pressure levels. This drug reduces the ability of the blood vessels to expand, which raises blood pressure.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nLifestyle and home remedies\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nDepending on the reason for low blood pressure, the following steps might help reduce or prevent symptoms.\n'
+                      '\n--> Drink more water, less alcohol. Alcohol is dehydrating and can lower blood pressure, even if drinking in moderation. Water increases the amount of blood in the body and prevents dehydration.\n'
+                      '--> Pay attention to body positions. Gently move from lying flat or squatting to a standing position. Dont sit with legs crossed.\n'
+                      '\nIf symptoms of low blood pressure begin while standing, cross the thighs like a pair of scissors and squeeze. Or put one foot on a ledge or chair and lean as far forward as possible. These moves encourage blood flow from the legs to the heart.\n'
+                      '--> Eat small, low-carb meals. To help prevent blood pressure from dropping sharply after meals, eat small meals several times a day. Limit high-carbohydrate foods such as potatoes, rice, pasta and bread.\n'
+                      '\nA health care provider also might recommend drinking one or two strong cups of caffeinated coffee or tea with breakfast. Caffeine can cause dehydration, however, so be sure to drink plenty of water and other fluids without caffeine.\n'
+                      '--> Exercise regularly. As a general goal, aim for at least 30 minutes of moderate physical activity every day. Avoid exercising in hot, humid conditions.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/low-blood-pressure/symptoms-causes/syc-20355465',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
+
+class HealthM extends StatelessWidget {
+  final List<String> categories = [
+    'Mumps',    
+    
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health M'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Mumps()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class Mumps extends StatefulWidget {
+  @override
+  _MumpsState createState() => _MumpsState();
+}
+
+class _MumpsState extends State<Mumps> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Mumps'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: 'Symptoms\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'Symptoms of mumps show up about 2 to 3 weeks after exposure to the virus. Some people may have no symptoms or very mild symptoms.\n'
+                      '\nThe first symptoms may be similar to flu symptoms such as:\n'
+                      '\n--> Fever\n'
+                      '--> Headache\n'
+                      '--> Muscle aches or pain\n'
+                      '--> Not wanting to eat\n'
+                      '--> Tiredness\n'
+                      '\nSwelling of the salivary glands usually starts within a few days. Symptoms may include:\n'
+                      '\n--> Swelling of one or both glands on the sides of the face\n'
+                      '--> Pain or tenderness around the swelling\n'
+                      '--> Less often, swelling of glands below the floor of the mouth\n'                    
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nCauses\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nMumps is caused by a type of germ called a virus. When someone has mumps, the virus is in saliva. Coughing or sneezing can release tiny droplets with the virus into the air.\n'
+                      '\nYou can get the virus by breathing in tiny droplets. Or you can get the virus by touching a surface where droplets have landed and then touching your face. You also can pick up the virus from direct contact, such as kissing or sharing a water bottle.\n'
+                      '\nOutbreaks in the United States most often happen where people live or work in close contact. These may include college campuses, summer camps and schools.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nPrevention\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nMost people who have had the mumps vaccines, called fully vaccinated, are protected from mumps infections. People who are not vaccinated are more likely to get mumps.\n'
+                      '\nFor some people, vaccine protection may go down over time. When fully vaccinated people get mumps, they usually have milder symptoms and fewer complications.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/mumps/symptoms-causes/syc-20375361',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
+class HealthN extends StatelessWidget {
+  final List<String> categories = [
+    'Low blood pressure (hypotension)',    
+    
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health L'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>LowBloodPressure()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 }
