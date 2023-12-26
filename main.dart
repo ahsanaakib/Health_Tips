@@ -1506,10 +1506,31 @@ class HealthAtoZ extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthM()));
               }else if(letters[index]=='N'){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthN()));
-              }
-              else if(letters[index]=='O'){
+              }else if(letters[index]=='O'){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthO()));
-              }
+              }else if(letters[index]=='P'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthP()));
+              }else if(letters[index]=='Q'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthQ()));
+              }else if(letters[index]=='R'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthR()));
+              }else if(letters[index]=='S'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthS()));
+              }else if(letters[index]=='T'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthT()));
+              }else if(letters[index]=='U'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthU()));
+              }else if(letters[index]=='V'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthV()));
+              }else if(letters[index]=='W'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthW()));
+              }else if(letters[index]=='X'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthX()));
+              }else if(letters[index]=='Y'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthY()));
+              }else if(letters[index]=='Z'){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthZ()));
+              }              
                 // Your navigation logic here
               },
               buttonColor: Colors.amber,
@@ -1523,7 +1544,7 @@ class HealthAtoZ extends StatelessWidget {
 
 
 
-class HealthA extends StatelessWidget {
+/*class HealthA extends StatelessWidget {
   HealthA({Key? key}) : super(key: key);
 
   final List<String> buttonTexts = [
@@ -1766,92 +1787,87 @@ class HealthA extends StatelessWidget {
       );
     });
   }
-}
+}*/
 
-
-
-
-class HealthB extends StatelessWidget {
-  HealthB({Key? key}) : super(key: key);
-
-  final List<String> buttonTexts = [
-    'Back Pain',
-    'Bacteria',
-    'Bad Cholesterol',
-    'Bird Flu',
-    'Blood Platelet',
-    'Brain Health',
-    'Breathlessness',
-    'Brittle Nails',
-    'Brushing',
-    'Burn',
+class HealthA extends StatelessWidget {
+  final List<String> categories = [
+    'Abdominal Pain',    
+    
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Health A-Z'),
+        title: Text('Health A'),
         backgroundColor: Colors.amber[800],
       ),
-      body: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Wrap(
-          spacing: 4.0,
-          runSpacing: 4.0,
-          children: buttonItems(context),
-        ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>FrozenShoulder()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
       ),
     );
   }
+}
 
-  List<Widget> buttonItems(BuildContext context) {
-    return buttonTexts.asMap().entries.map((entry) {
-      final index = entry.key;
-      final text = entry.value;
+class HealthB extends StatelessWidget {
+  final List<String> categories = [
+    'Back Pain',    
+    
+  ];
 
-      return ButtonTheme(
-        alignedDropdown: true,
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            minWidth: 50.0, // Minimum width for each button
-          ),
-          child: OutlinedButton(
-            onPressed: () {
-              performButtonAction(index, context);
-            },
-            style: OutlinedButton.styleFrom(
-              backgroundColor: Colors.transparent,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              side: BorderSide(color: Colors.amber),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health B'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>FrozenShoulder()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
             ),
-            child: Text(
-              text,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.black,
-              ),
-            ),
-          ),
-        ),
-      );
-    }).toList();
-  }
-
-  void performButtonAction(int index, BuildContext context) {
-    if (index == 0) {
-      // Action for Button 1
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthBackPain()));
-    } else if (index == 1) {
-      // Action for Button 2
-     
-    } 
-    // Add more else-if blocks for other buttons
+          );
+        },
+      ),
+    );
   }
 }
-class HealthBackPain extends StatelessWidget {
+
+/*class HealthBackPain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1895,88 +1911,45 @@ class HealthBackPain extends StatelessWidget {
       ),
     );
   }
-}
+}*/
 
 
 class HealthC extends StatelessWidget {
-  HealthC({Key? key}) : super(key: key);
-
-  final List<String> buttonTexts = [
-    'Back Pain',
-    'Bacteria',
-    'Bad Cholesterol',
-    'Bird Flu',
-    'Blood Platelet',
-    'Brain Health',
-    'Breathlessness',
-    'Brittle Nails',
-    'Brushing',
-    'Burn',
+  final List<String> categories = [
+    'Chest Pain',    
+    
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Health A-Z'),
+        title: Text('Health C'),
         backgroundColor: Colors.amber[800],
       ),
-      body: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            double screenWidth = constraints.maxWidth;
-            int maxColumns = (screenWidth / 100).floor(); // Adjust the button width as needed
+      body: ListView.builder(        
 
-            return SingleChildScrollView(
-              child: Wrap(
-                alignment: WrapAlignment.start,
-                spacing: 4.0,
-                runSpacing: 4.0,
-                children: buttonItems(maxColumns, context),
-              ),
-            );
-          },
-        ),
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>FrozenShoulder()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
       ),
     );
-  }
-
-  List<Widget> buttonItems(int maxColumns, BuildContext context) {
-    return List.generate(buttonTexts.length, (index) {
-      return FractionallySizedBox(
-        widthFactor: 1.0 / maxColumns, // Distribute available width equally
-        child: OutlinedButton(
-          onPressed: () {
-            performButtonAction(index, context);
-          },
-          style: OutlinedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-          ),
-          child: Text(
-            buttonTexts[index],
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.black,
-            ),
-          ),
-        ),
-      );
-    });
-  }
-
-  void performButtonAction(int index, BuildContext context) {
-    if (index == 0) {
-      // Action for Button 1
-    
-    } else if (index == 1) {
-      // Action for Button 2
-     
-    } 
-    // Add more else-if blocks for other buttons
   }
 }
 
@@ -3589,7 +3562,7 @@ class _MumpsState extends State<Mumps> {
 }
 class HealthN extends StatelessWidget {
   final List<String> categories = [
-    'Low blood pressure (hypotension)',    
+    'Neck Pain',    
     
   ];
 
@@ -3597,11 +3570,10 @@ class HealthN extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Health L'),
+        title: Text('Health N'),
         backgroundColor: Colors.amber[800],
       ),
       body: ListView.builder(        
-
         itemCount: categories.length,
         itemBuilder: (context, index) {
           return Card(
@@ -3611,7 +3583,7 @@ class HealthN extends StatelessWidget {
               subtitle: Text('Tap for info'),
               onTap: () {
                 if(index == 0){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>LowBloodPressure()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>NeckPain()));
                 }
                 
                 // Add navigation or detailed information for each category
@@ -3626,12 +3598,159 @@ class HealthN extends StatelessWidget {
   }
 }
 
+class NeckPain extends StatefulWidget {
+  @override
+  _NeckPainState createState() => _NeckPainState();
+}
+
+class _NeckPainState extends State<NeckPain> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Neck Pain'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: 'Symptoms\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'Symptoms include:\n'                      
+                      '\n--> Pain thats often worsened by holding the head in one place for long periods, such as when driving or working at a computer\n'
+                      '--> Muscle tightness and spasms\n'
+                      '--> Decreased ability to move the head\n'
+                      '--> Headache\n'                      
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nCauses\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nBecause the neck supports the weight of the head, it can be at risk of injuries and conditions that cause pain and restrict motion. Neck pain causes include:\n'
+                      '\n--> Muscle strains. Overuse, such as too many hours hunched over a computer or a smartphone, often triggers muscle strains. Even minor things, such as reading in bed, can strain neck muscles.\n'
+                      '--> Worn joints. As with other joints in the body, neck joints tend to wear with age. In response to this wear and tear, the body often forms bone spurs that can affect joint motion and cause pain.\n'
+                      '--> Nerve compression. Herniated disks or bone spurs in the vertebrae of the neck can press on the nerves branching out from the spinal cord.\n'
+                      '--> Injuries. Rear-end auto collisions often result in whiplash injury. This occurs when the head jerks backward and then forward, straining the soft tissues of the neck.\n'
+                      '--> Diseases. Certain diseases, such as rheumatoid arthritis, meningitis or cancer, can cause neck pain.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nPrevention\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nMost neck pain is associated with poor posture combined with age-related wear and tear. To help prevent neck pain, keep your head centered over your spine. Some simple changes in your daily routine may help. Consider trying to:\n'
+                      '\n--> Use good posture. When standing and sitting, be sure your shoulders are in a straight line over your hips and your ears are directly over your shoulders. When using cell phones, tablets and other small screens, keep your head up and hold the device straight out rather than bending your neck to look down at the device.\n'
+                      '--> Take frequent breaks. If you travel long distances or work long hours at your computer, get up, move around, and stretch your neck and shoulders.\n'
+                      '--> Adjust your desk, chair and computer so that the monitor is at eye level. Knees should be slightly lower than hips. Use your chairs armrests.\n'
+                      '--> If you smoke, quit. Smoking can increase the risk of developing neck pain.\n'
+                      '--> Avoid carrying heavy bags with straps over your shoulder. The weight can strain your neck.\n'
+                      '--> Sleep in a healthy position. Your head and neck should be aligned with your body. Use a small pillow under your neck. Try sleeping on your back with your thighs elevated on pillows, which will flatten your spinal muscles.\n'
+                      '--> Stay active. If you do not move much, increase your activity level.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/neck-pain/symptoms-causes/syc-20375581',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
 class HealthO extends StatelessWidget {
   final List<String> categories = [
     'Oral Health',    
     
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -3781,92 +3900,1636 @@ class _OralHealthState extends State<OralHealth> {
   }
 }
 
-/*class HealthD extends StatelessWidget {
-  HealthD({Key? key}) : super(key: key);
-
-  final List<String> buttonTexts = [
-    'Abdominal Pain',
-    'Acidity',
-    'Button 3',
-    'Button 4',
-    'Button 5',
-    'Button 6',
-    'Button 7',
-    'Button 8',
-    'Button 9',
-    'Button 10',
+class HealthP extends StatelessWidget {
+  final List<String> categories = [
+    'Pneumonia',    
+    
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Health A-Z'),
+        title: Text('Health P'),
         backgroundColor: Colors.amber[800],
       ),
-      body: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            double screenWidth = constraints.maxWidth;
-            int maxColumns = (screenWidth / 100).floor(); // Adjust the button width as needed
+      body: ListView.builder(        
 
-            return SingleChildScrollView(
-              child: Wrap(
-                alignment: WrapAlignment.start,
-                spacing: 4.0,
-                runSpacing: 4.0,
-                children: buttonItems(maxColumns, context),
-              ),
-            );
-          },
-        ),
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Pneumonia()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
       ),
     );
   }
+}
 
-  List<Widget> buttonItems(int maxColumns, BuildContext context) {
-    return List.generate(buttonTexts.length, (index) {
-      return FractionallySizedBox(
-        widthFactor: 1.0 / maxColumns, // Distribute available width equally
-        child: OutlinedButton(
-          onPressed: () {
-            performButtonAction(index, context);
-          },
-          style: OutlinedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
+class Pneumonia extends StatefulWidget {
+  @override
+  _PneumoniaState createState() => _PneumoniaState();
+}
+
+class _PneumoniaState extends State<Pneumonia> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Pneumonia'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
             ),
-          ),
-          child: Text(
-            buttonTexts[index],
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.black,
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: 'Symptoms\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'The signs and symptoms of pneumonia vary from mild to severe, depending on factors such as the type of germ causing the infection, and your age and overall health. Mild signs and symptoms often are similar to those of a cold or flu, but they last longer.\n'
+                      '\nSigns and symptoms of pneumonia may include:\n'
+                      '\n--> Chest pain when you breathe or cough\n'
+                      '--> Confusion or changes in mental awareness (in adults age 65 and older)\n'
+                      '--> Cough, which may produce phlegm\n'
+                      '--> Fatigue\n'
+                      '--> Fever, sweating and shaking chills\n'
+                      '--> Lower than normal body temperature (in adults older than age 65 and people with weak immune systems)\n'
+                      '--> Nausea, vomiting or diarrhea\n'
+                      '--> Shortness of breath\n'
+                      '\nNewborns and infants may not show any sign of the infection. Or they may vomit, have a fever and cough, appear restless or tired and without energy, or have difficulty breathing and eating.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nCauses\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nMany germs can cause pneumonia. The most common are bacteria and viruses in the air we breathe. Your body usually prevents these germs from infecting your lungs. But sometimes these germs can overpower your immune system, even if your health is generally good.\n'
+                      '\nPneumonia is classified according to the types of germs that cause it and where you got the infection.\n'
+                      '\nCommunity-acquired pneumonia\n'
+                      '\nCommunity-acquired pneumonia is the most common type of pneumonia. It occurs outside of hospitals or other health care facilities. It may be caused by:\n'
+                      '\n--> Bacteria. The most common cause of bacterial pneumonia in the U.S. is Streptococcus pneumoniae. This type of pneumonia can occur on its own or after you have had a cold or the flu. It may affect one part (lobe) of the lung, a condition called lobar pneumonia.\n'
+                      '--> Bacteria-like organisms. Mycoplasma pneumoniae also can cause pneumonia. It typically produces milder symptoms than do other types of pneumonia. Walking pneumonia is an informal name given to this type of pneumonia, which typically is not severe enough to require bed rest.\n'
+                      '--> Fungi. This type of pneumonia is most common in people with chronic health problems or weakened immune systems, and in people who have inhaled large doses of the organisms. The fungi that cause it can be found in soil or bird droppings and vary depending upon geographic location.\n'
+                      '--> Viruses, including COVID-19. Some of the viruses that cause colds and the flu can cause pneumonia. Viruses are the most common cause of pneumonia in children younger than 5 years. Viral pneumonia is usually mild. But in some cases it can become very serious. Coronavirus 2019 (COVID-19) may cause pneumonia, which can become severe.\n'
+                      '\nHospital-acquired pneumonia\n'
+                      '\nSome people catch pneumonia during a hospital stay for another illness. Hospital-acquired pneumonia can be serious because the bacteria causing it may be more resistant to antibiotics and because the people who get it are already sick. People who are on breathing machines (ventilators), often used in intensive care units, are at higher risk of this type of pneumonia.\n'
+                      '\nHealth care-acquired pneumonia\n'
+                      '\nHealth care-acquired pneumonia is a bacterial infection that occurs in people who live in long-term care facilities or who receive care in outpatient clinics, including kidney dialysis centers. Like hospital-acquired pneumonia, health care-acquired pneumonia can be caused by bacteria that are more resistant to antibiotics.\n'
+                      '\nAspiration pneumonia\n'
+                      '\nAspiration pneumonia occurs when you inhale food, drink, vomit or saliva into your lungs. Aspiration is more likely if something disturbs your normal gag reflex, such as a brain injury or swallowing problem, or excessive use of alcohol or drugs.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nPrevention\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nTo help prevent pneumonia:\n'
+                      '\n--> Get vaccinated. Vaccines are available to prevent some types of pneumonia and the flu. Talk with your doctor about getting these shots. The vaccination guidelines have changed over time so make sure to review your vaccination status with your doctor even if you recall previously receiving a pneumonia vaccine.\n'
+                      '--> Make sure children get vaccinated. Doctors recommend a different pneumonia vaccine for children younger than age 2 and for children ages 2 to 5 years who are at particular risk of pneumococcal disease. Children who attend a group child care center should also get the vaccine. Doctors also recommend flu shots for children older than 6 months.\n'
+                      '--> Practice good hygiene. To protect yourself against respiratory infections that sometimes lead to pneumonia, wash your hands regularly or use an alcohol-based hand sanitizer.\n'
+                      '--> Do not smoke. Smoking damages your lungs natural defenses against respiratory infections.\n'
+                      '--> Keep your immune system strong. Get enough sleep, exercise regularly and eat a healthy diet.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
             ),
-          ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/pneumonia/symptoms-causes/syc-20354204',
+                ), 
+              ),
+            ), 
+          ],
         ),
-      );
-    });
+      ),     
+    );
   }
+}
 
-  void performButtonAction(int index, BuildContext context) {
-    if (index == 0) {
-      // Action for Button 1
+class HealthQ extends StatelessWidget {
+  final List<String> categories = [
+    'Oral Health',    
     
-    } else if (index == 1) {
-      // Action for Button 2
-     
-    } 
-    // Add more else-if blocks for other buttons
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health O'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>OralHealth()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
   }
-}*/
+}
+class HealthR extends StatelessWidget {
+  final List<String> categories = [
+    'Oral Health',    
+    
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health O'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>OralHealth()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class HealthS extends StatelessWidget {
+  final List<String> categories = [
+    'Schizophrenia',    
+    
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health S'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Schizophrenia()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class Schizophrenia extends StatefulWidget {
+  @override
+  _SchizophreniaState createState() => _SchizophreniaState();
+}
+
+class _SchizophreniaState extends State<Schizophrenia> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Schizophrenia'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: 'Symptoms\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'Schizophrenia involves a range of problems with thinking (cognition), behavior and emotions. Signs and symptoms may vary, but usually involve delusions, hallucinations or disorganized speech, and reflect an impaired ability to function. Symptoms may include:\n'                      
+                      '\n--> Delusions. These are false beliefs that are not based in reality. For example, you think that you are being harmed or harassed; certain gestures or comments are directed at you; you have exceptional ability or fame; another person is in love with you; or a major catastrophe is about to occur. Delusions occur in most people with schizophrenia.\n'
+                      '--> Hallucinations. These usually involve seeing or hearing things that do not exist. Yet for the person with schizophrenia, they have the full force and impact of a normal experience. Hallucinations can be in any of the senses, but hearing voices is the most common hallucination.\n'
+                      '--> Disorganized thinking (speech). Disorganized thinking is inferred from disorganized speech. Effective communication can be impaired, and answers to questions may be partially or completely unrelated. Rarely, speech may include putting together meaningless words that can not be understood, sometimes known as word salad.\n'
+                      '--> Extremely disorganized or abnormal motor behavior. This may show in a number of ways, from childlike silliness to unpredictable agitation. Behavior is not focused on a goal, so its hard to do tasks. Behavior can include resistance to instructions, inappropriate or bizarre posture, a complete lack of response, or useless and excessive movement.\n'
+                      '--> Negative symptoms. This refers to reduced or lack of ability to function normally. For example, the person may neglect personal hygiene or appear to lack emotion (does not make eye contact, does not change facial expressions or speaks in a monotone). Also, the person may lose interest in everyday activities, socially withdraw or lack the ability to experience pleasure.\n'
+                      '\nSymptoms can vary in type and severity over time, with periods of worsening and remission of symptoms. Some symptoms may always be present.\n'
+                      '\nIn men, schizophrenia symptoms typically start in the early to mid-20s. In women, symptoms typically begin in the late 20s. Its uncommon for children to be diagnosed with schizophrenia and rare for those older than age 45.\n'                      
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nSymptoms in teenagers\n'
+                      ,
+                    ),
+                    TextSpan(
+                      text:
+                      '\nSchizophrenia symptoms in teenagers are similar to those in adults, but the condition may be more difficult to recognize. This may be in part because some of the early symptoms of schizophrenia in teenagers are common for typical development during teen years, such as:\n'
+                      '\n--> Withdrawal from friends and family\n'
+                      '--> A drop in performance at school\n'
+                      '--> Trouble sleeping\n'
+                      '--> Irritability or depressed mood\n'
+                      '--> Lack of motivation\n'
+                      '\nAlso, recreational substance use, such as marijuana, methamphetamines or LSD, can sometimes cause similar signs and symptoms.\n'
+                      '\nCompared with schizophrenia symptoms in adults, teens may be:\n'                      
+                      '\n--> Less likely to have delusions\n'
+                      '--> More likely to have visual hallucinations\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nCauses\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nIts not known what causes schizophrenia, but researchers believe that a combination of genetics, brain chemistry and environment contributes to development of the disorder.\n'
+                      '\nProblems with certain naturally occurring brain chemicals, including neurotransmitters called dopamine and glutamate, may contribute to schizophrenia. Neuroimaging studies show differences in the brain structure and central nervous system of people with schizophrenia. While researchers are not certain about the significance of these changes, they indicate that schizophrenia is a brain disease.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nPrevention\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nThere is no sure way to prevent schizophrenia, but sticking with the treatment plan can help prevent relapses or worsening of symptoms. In addition, researchers hope that learning more about risk factors for schizophrenia may lead to earlier diagnosis and treatment.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/schizophrenia/symptoms-causes/syc-20354443',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
 
 
-  
+class HealthT extends StatelessWidget {
+  final List<String> categories = [
+    'Typhoid fever',
+    
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health S'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
 
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>TyphoidFever()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+class TyphoidFever extends StatefulWidget {
+  @override
+  _TyphoidFeverState createState() => _TyphoidFeverState();
+}
 
+class _TyphoidFeverState extends State<TyphoidFever> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Typhoid Fever'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: 'Symptoms\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'Symptoms are likely to start slowly, often showing up 1 to 3 weeks after exposure to the bacteria.\n'                      
+                      '\nEarly symptoms include:\n'
+                      '\n--> Fever that starts low and increases throughout the day, possibly reaching as high as 104 degrees Fahrenheit (40 degrees Celsius)\n'
+                      '--> Chills\n'
+                      '--> Headache\n'
+                      '--> Weakness and fatigue\n'
+                      '--> Muscle aches\n'
+                      '--> Stomach pain\n'
+                      '--> Diarrhea or constipation\n'
+                      '--> Rash\n'
+                      '\nPeople also may have a cough, loss of appetite and sweating.\n'
+                      '\nA few weeks after symptoms start, the illness can cause problems in the intestines. People may have:\n'
+                      '\n--> Stomach pain\n'
+                      '--> Very swollen stomach\n'
+                      '--> An infection caused by gut bacteria spreading throughout the body, called sepsis\n'
+                      '\nIn very serious cases, people may:\n'
+                      '--> Become confused\n'
+                      '--> Not be able to pay attention to anything around them\n'
+                      '--> Not be able to react to the world around them\n'
+                      '\nIn some people, symptoms may return up to a few weeks after the fever has gone away.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),                    
+                    TextSpan(
+                      text: '\nCauses\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nA bacteria strain called Salmonella enterica serotype typhi causes typhoid fever. Other strains of salmonella bacteria cause a similar disease called paratyphoid fever.\n'
+                      '\nPeople pick up the bacteria most often in places where outbreaks are common. The bacteria passes out of the body in the stool and urine of people who are carrying the bacteria. Without careful hand-washing after going to the bathroom, the bacteria can move from the hands to objects or other people.\n'
+                      '\nThe bacteria also can spread from a person who carries the bacteria. It can spread on food that is not cooked, such as raw fruits without a peel. In places where water is not treated to kill germs, you can pick up the bacteria from that source. This includes drinking water, using ice made from untreated water, or by drinking unpasteurized milk or juice.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nTyphoid carriers\n'
+                    ),
+                    TextSpan(
+                      text:
+                      'Even after antibiotic treatment, a small number of people who recover from typhoid fever still have the bacteria living in their bodies. These people are known as chronic carriers. They no longer have symptoms of the disease. But they still shed the bacteria in their stools and spread it.\n'                      
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nPrevention\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nPeople can get a vaccination against typhoid fever. This is an option if you live where typhoid fever is common. It is also an option if you plan to travel to a place where the risk is high.\n'
+                      '\nWhere typhoid fever is common, access to treated water helps avoid contact with the Salmonella enterica serotype typhi bacteria. Management of human waste also helps people avoid the bacteria. And careful hand-washing for people who prepare and serve food is also important.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nVaccines\n'
+                    ),
+                    TextSpan(
+                      text:
+                      'Two vaccines are available in the United States for people age 2 and older.\n'
+                      '\n--> One is given as a single shot at least one week before travel.\n'
+                      '--> One is given orally in four capsules, with one capsule to be taken every other day.\n'
+                      '\nThe effectiveness of these vaccines wears off over time. So repeat immunization is needed.\n'
+                      '\nBecause the vaccine wont provide complete protection, follow these guidelines when traveling to high-risk areas:\n'
+                      '\n--> Wash your hands. Frequent hand-washing in hot, soapy water is the best way to control infection. Wash before eating or preparing food and after using the toilet. Carry an alcohol-based hand sanitizer for times when soap and water are not available.\n'
+                      '--> Avoid using untreated water. Contaminated drinking water is a problem in areas where typhoid fever is common. For that reason, drink only bottled water or canned or bottled carbonated beverages, wine and beer. Carbonated bottled water is safer than noncarbonated bottled water. Ask for drinks without ice. Use bottled water to brush your teeth, and try not to swallow water in the shower.\n'
+                      '--> Avoid raw fruits and vegetables. Because raw produce may have been washed in contaminated water, avoid fruits and vegetables that you cant peel, especially lettuce. To be safe, you may want to avoid raw foods.\n'
+                      '--> Choose hot foods. Avoid food thats stored or served at room temperature. Freshly made, steaming hot foods may be less risky than uncooked foods.\n'
+                      '--> Know where the health care providers are. Find out about medical care in the areas you will visit. Carry a list of the names, addresses and phone numbers of health care providers.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nPrevent infecting others\n'
+                    ),
+                    TextSpan(
+                      text:
+                      'If you are recovering from typhoid fever, these measures can help keep others safe:\n'
+                      '\n--> Take your antibiotics. Follow your health care providers instructions for taking your antibiotics and be sure to finish the entire prescription.\n'
+                      '--> Wash your hands often. This is the single most important thing you can do to keep from spreading the infection to others. Use hot, soapy water and scrub thoroughly for at least 30 seconds, especially before eating and after using the toilet.\n'                      
+                      '--> Avoid handling food. Avoid preparing food for others until your health care provider says you are no longer contagious. If you work with food, you may need to take a test to show you are not shedding typhoid bacteria. If you work in health care, you also may need to show you are not shedding the bacteria.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/typhoid-fever/symptoms-causes/syc-20378661',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
+
+class HealthU extends StatelessWidget {
+  final List<String> categories = [
+    'Ulcerative colitis',    
+    
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health U'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>UlcerativeColitis()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class UlcerativeColitis extends StatefulWidget {
+  @override
+  _UlcerativeColitisState createState() => _UlcerativeColitisState();
+}
+
+class _UlcerativeColitisState extends State<UlcerativeColitis> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Ulcerative Colitis'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: 'Symptoms\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'Ulcerative colitis symptoms can vary, depending on the severity of inflammation and where it occurs. Signs and symptoms may include:\n'                      
+                      '\n--> Diarrhea, often with blood or pus\n'
+                      '--> Rectal bleeding — passing small amount of blood with stool\n'
+                      '--> Abdominal pain and cramping\n'
+                      '--> Rectal pain\n'
+                      '--> Urgency to defecate\n'
+                      '--> Inability to defecate despite urgency\n'
+                      '--> Weight loss\n'
+                      '--> Fatigue\n'
+                      '--> Fever\n'
+                      '--> In children, failure to grow\n'                      
+                      '\nMost people with ulcerative colitis have mild to moderate symptoms. The course of ulcerative colitis may vary, with some people having long periods when it goes away. This is called remission.\n'                      
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nTypes\n'
+                      ,
+                    ),
+                    TextSpan(
+                      text:
+                      '\nHealth care providers often classify ulcerative colitis according to its location. Symptoms of each type often overlap. Types of ulcerative colitis include:\n'
+                      '\n--> Ulcerative proctitis. Inflammation is confined to the area closest to the anus, also called the rectum. Rectal bleeding may be the only sign of the disease.\n'
+                      '--> Proctosigmoiditis. Inflammation involves the rectum and sigmoid colon — the lower end of the colon. Symptoms include bloody diarrhea, abdominal cramps and pain, and an inability to move the bowels despite the urge to do so. This is called tenesmus.\n'
+                      '--> Left-sided colitis. Inflammation extends from the rectum up through the sigmoid and descending portions of the colon. Symptoms include bloody diarrhea, abdominal cramping and pain on the left side, and urgency to defecate.\n'
+                      '--> Pancolitis. This type often affects the entire colon and causes bouts of bloody diarrhea that may be severe, abdominal cramps and pain, fatigue, and significant weight loss.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nCauses\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nThe exact cause of ulcerative colitis remains unknown. Previously, diet and stress were suspected. However, researchers now know that these factors may aggravate but do not cause ulcerative colitis.\n'
+                      '\nOne possible cause is an immune system malfunction. When your immune system tries to fight off an invading virus or bacterium, an irregular immune response causes the immune system to attack the cells in the digestive tract, too.\n'
+                      '\nHeredity also seems to play a role in that ulcerative colitis is more common in people who have family members with the disease. However, most people with ulcerative colitis do not have this family history.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nComplications\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nPossible complications of ulcerative colitis include:\n'
+                      '\n--> Severe bleeding\n'
+                      '--> Severe dehydration\n'
+                      '--> A rapidly swelling colon, also called a toxic megacolon\n'
+                      '--> A hole in the colon, also called a perforated colon\n'
+                      '--> Increased risk of blood clots in veins and arteries\n'
+                      '--> Inflammation of the skin, joints and eyes\n'
+                      '--> An increased risk of colon cancer\n'
+                      '--> Bone loss, also called osteoporosis\n'                      
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/ulcerative-colitis/symptoms-causes/syc-20353326',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
+
+class HealthV extends StatelessWidget {
+  final List<String> categories = [
+    'Vitamin A',
+    'Vitamin B',
+    'Vitamin C',
+    
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health V'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>UlcerativeColitis()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+class HealthW extends StatelessWidget {
+  final List<String> categories = [
+    'Water',
+    
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health W'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Water()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class Water extends StatefulWidget {
+  @override
+  _WaterState createState() => _WaterState();
+}
+
+class _WaterState extends State<Water> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Water'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: 'What are the health benefits of water?\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'Water is your bodys principal chemical component and makes up about 50% to 70% of your body weight. Your body depends on water to survive.\n'
+                      '\nEvery cell, tissue and organ in your body needs water to work properly. For example, water:\n'
+                      '\n--> Gets rid of wastes through urination, perspiration and bowel movements\n'
+                      '--> Keeps your temperature normal\n'
+                      '--> Lubricates and cushions joints\n'
+                      '--> Protects sensitive tissues\n'
+                      '\nLack of water can lead to dehydration — a condition that occurs when you do not have enough water in your body to carry out normal functions. Even mild dehydration can drain your energy and make you tired.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nHow much water do you need?\n'
+                      ,
+                    ),
+                    TextSpan(
+                      text:
+                      '\nEvery day you lose water through your breath, perspiration, urine and bowel movements. For your body to function properly, you must replenish its water supply by consuming beverages and foods that contain water.\n'
+                      '\nSo how much fluid does the average, healthy adult living in a temperate climate need? The U.S. National Academies of Sciences, Engineering, and Medicine determined that an adequate daily fluid intake is:\n'
+                      '--> About 15.5 cups (3.7 liters) of fluids a day for men\n'
+                      '--> About 11.5 cups (2.7 liters) of fluids a day for women\n'
+                      '\nThese recommendations cover fluids from water, other beverages and food. About 20% of daily fluid intake usually comes from food and the rest from drinks.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nWhat about the advice to drink 8 glasses a day?\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nYou have probably heard the advice to drink eight glasses of water a day. Thats easy to remember, and its a reasonable goal.\n'
+                      '\nMost healthy people can stay hydrated by drinking water and other fluids whenever they feel thirsty. For some people, fewer than eight glasses a day might be enough. But other people might need more.\n'
+                      '\nYou might need to modify your total fluid intake based on several factors:\n'
+                      '\n--> Exercise. If you do any activity that makes you sweat, you need to drink extra water to cover the fluid loss. Its important to drink water before, during and after a workout.\n'
+                      '--> Environment. Hot or humid weather can make you sweat and requires additional fluid. Dehydration also can occur at high altitudes.\n'
+                      '--> Overall health. Your body loses fluids when you have a fever, vomiting or diarrhea. Drink more water or follow a doctors recommendation to drink oral rehydration solutions. Other conditions that might require increased fluid intake include bladder infections and urinary tract stones.\n'
+                      '--> Pregnancy and breast-feeding. If you are pregnant or breast-feeding, you may need additional fluids to stay hydrated.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nHow do I know if I am drinking enough?\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nYour fluid intake is probably adequate if:\n'
+                      '\n--> You rarely feel thirsty\n'
+                      '--> Your urine is colorless or light yellow\n'
+                      '\nYour doctor or dietitian can help you determine the amount of water thats right for you every day.\n'
+                      '\nTo prevent dehydration and make sure your body has the fluids it needs, make water your beverage of choice. Its a good idea to drink a glass of water:\n'
+                      '\n--> With each meal and between meals\n'
+                      '--> Before, during and after exercise\n'
+                      '--> If you feel thirsty\n'                      
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nShould I worry about drinking too much water?\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nDrinking too much water is rarely a problem for healthy, well-nourished adults. Athletes occasionally may drink too much water in an attempt to prevent dehydration during long or intense exercise. When you drink too much water, your kidneys can not get rid of the excess water. The sodium content of your blood becomes diluted. This is called hyponatremia and it can be life-threatening.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/water/art-20044256',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
+
+class HealthX extends StatelessWidget {
+  final List<String> categories = [
+    'X-Ray',    
+    
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health X'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>UlcerativeColitis()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+class HealthY extends StatelessWidget {
+  final List<String> categories = [
+    'Yellow Fever',    
+    
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health Y'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>YellowFever()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class YellowFever extends StatefulWidget {
+  @override
+  _YellowFeverState createState() => _YellowFeverState();
+}
+
+class _YellowFeverState extends State<YellowFever> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Ulcerative Colitis'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: 'Key facts\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      '--> Yellow fever is an infectious disease transmitted by mosquitoes that bite mostly during the day.\n'                      
+                      '--> As of 2023, 34 countries in Africa and 13 countries in Central and South America are either endemic for, or have regions that are endemic for, yellow fever.\n'
+                      '--> Yellow fever is prevented by a vaccine, which is safe and affordable. A single dose of yellow fever vaccine is sufficient to grant life-long protection.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nSymptoms\n'
+                      ,
+                    ),
+                    TextSpan(
+                      text:
+                      '\nThe incubation period for yellow fever is 3 to 6 days. Many people do not experience symptoms. Common symptoms include fever, muscle pain, headache, loss of appetite, nausea or vomiting. In most cases, symptoms disappear after 3 to 4 days.\n'
+                      '\nA small percentage of patients enter a second, more toxic phase within 24 hours of recovering from initial symptoms. High fever returns and several body systems are affected, usually the liver and the kidneys. In this phase, people are likely to develop jaundice (yellowing of the skin and eyes, hence the name yellow fever), dark urine, and abdominal pain with vomiting. Bleeding can occur from the mouth, nose, eyes, or stomach. Half of the patients who enter the toxic phase die within 7 to 10 days.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nTreatment\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nThere is no specific anti-viral drug for yellow fever. Patients should rest, stay hydrated and seek medical advice. Depending on the clinical manifestations and other circumstances, patients may be sent home, be referred for in-hospital management, or require emergency treatment and urgent referral. Treatment for dehydration, liver and kidney failure, and fever improves outcomes. Associated bacterial infections can be treated with antibiotics.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nPrevention\n'
+                        '1. Vaccination\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nVaccination is the most important means of preventing yellow fever. The yellow fever vaccine is safe, affordable and a single dose provides life-long protection against yellow fever disease. A booster dose of yellow fever vaccine is not needed.\n'
+                      '\nThe vaccine provides effective immunity within 10 days for 80 to 100% of people vaccinated, and within 30 days for more than 99% of people vaccinated.\n'
+                      '\nSide-effects from the yellow fever vaccine are rare. People who are usually excluded from vaccination include:\n'
+                      '\n--> infants aged less than 9 months;\n'
+                      '--> pregnant women except during a yellow fever outbreak when the risk of infection is high;\n'
+                      '--> people with severe allergies to egg protein; and\n'
+                      '--> people with severe immunodeficiency due to symptomatic HIV/AIDS or other causes, or who have a thymus disorder.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text:
+                        '\n2. Vector control\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nThe risk of yellow fever transmission in urban areas can be reduced by eliminating potential mosquito breeding sites, including by applying larvicides to water storage containers and other places where standing water collects.\n'
+                      '\nPreventive measures, such as wearing clothing to minimize skin exposure and repellents are recommended to avoid mosquito bites. The use of insecticide-treated bed nets is limited by the fact that Aedes mosquitos bite during the daytime.\n'
+                      '\nBoth vector surveillance and control are components of the prevention and control of vector-borne diseases, especially for transmission control in epidemic situations. For yellow fever, vector surveillance targeting Aedes aegypti and other Aedes species will help inform where there is a risk of an urban outbreak.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text:
+                        '\n3. Epidemic preparedness and response\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nPrompt detection of yellow fever and rapid response through emergency vaccination campaigns are essential for controlling outbreaks. However, underreporting is a concern; WHO estimates the true number of cases to be 10 to 250 times what is now being reported.\n'
+                      '\nWHO recommends that every at-risk country has at least one national laboratory where basic yellow fever blood tests can be performed.  A confirmed case of yellow fever in an unvaccinated population is considered an outbreak. A confirmed case in any context must be fully investigated. Investigation teams must assess and respond to the outbreak with both emergency measures and longer-term immunization plans.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),                  
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.who.int/news-room/fact-sheets/detail/yellow-fever',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
+class HealthZ extends StatelessWidget {
+  final List<String> categories = [
+    'Zika Virus',    
+    
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Health Z'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: ListView.builder(        
+
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.health_and_safety ),
+              title: Text(categories[index]),
+              subtitle: Text('Tap for info'),
+              onTap: () {
+                if(index == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ZikaVirus()));
+                }
+                
+                // Add navigation or detailed information for each category
+                // For simplicity, let's just print the selected category for now
+                print('Selected Category: ${categories[index]}');
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class ZikaVirus extends StatefulWidget {
+  @override
+  _ZikaVirusState createState() => _ZikaVirusState();
+}
+
+class _ZikaVirusState extends State<ZikaVirus> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Ulcerative Colitis'),
+        backgroundColor: Colors.amber[800],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: 'Key facts\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      '--> Zika virus is transmitted primarily by Aedes mosquitoes, which bite mostly during the day.\n'                      
+                      '--> Most people with Zika virus infection do not develop symptoms; those who do typically have symptoms including rash, fever, conjunctivitis, muscle and joint pain, malaise and headache that last for 2 to 7 days.\n'
+                      '--> Zika virus infection during pregnancy can cause infants to be born with microcephaly and other congenital malformations as well as preterm birth and miscarriage.\n'
+                      '--> Zika virus infection is associated with Guillain-Barré syndrome, neuropathy and myelitis in adults and children.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nSymptoms\n'
+                      ,
+                    ),
+                    TextSpan(
+                      text:
+                      '\nMost people infected with Zika virus do not develop symptoms. Among those who do, they typically start 3–14 days after infection, are generally mild including rash, fever, conjunctivitis, muscle and joint pain, malaise and headache, and usually last for 2–7 days. These symptoms are common to other arboviral and non-arboviral diseases; thus, the diagnosis of Zika virus infection requires laboratory confirmation.\n'                      
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nTreatment\n'
+                    ),
+                    TextSpan(
+                      text:
+                      '\nThere is no specific treatment available for Zika virus infection or disease.\n'
+                      '\nPeople with symptoms such as rash, fever or joint pain should get plenty of rest, drink fluids, and treat symptoms with antipyretics and/or analgesics. Nonsteroidal anti-inflammatory drugs should be avoided until dengue virus infections are ruled out because of bleeding risk. If symptoms worsen, patients should seek medical care and advice.\n'
+                      '\nPregnant women living in areas with Zika transmission or who develop symptoms of Zika virus infection should seek medical attention for laboratory testing, information, counselling and other clinical care.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nPrevention\n'                        
+                    ),
+                    TextSpan(
+                      text:
+                      '\nNo vaccine is yet available for the prevention or treatment of Zika virus infection. Development of a Zika vaccine remains an active area of research.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),                    
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.who.int/news-room/fact-sheets/detail/zika-virus?gclid=Cj0KCQiAkKqsBhC3ARIsAEEjuJi6GFzZg2BxcTiuGciUr0cpf93vekUzwmn3qg7GqMwkAXyS_FRAMBYaArgKEALw_wcB',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
+    );
+  }
+}
 
 /*class VitaminButton extends StatelessWidget {
   @override
