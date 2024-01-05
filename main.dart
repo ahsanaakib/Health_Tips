@@ -1,73 +1,3 @@
-/*import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Rounded Buttons Example'),
-        ),
-        body: Center(
-          child: RoundedButtons(),
-        ),
-      ),
-    );
-  }
-}
-
-class RoundedButtons extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        RoundedButton(label: "Button 1", onPressed: () => print("Button 1 pressed")),
-        RoundedButton(label: "Button 2", onPressed: () => print("Button 2 pressed")),
-        RoundedButton(label: "Button 3", onPressed: () => print("Button 3 pressed")),
-        RoundedButton(label: "Button 4", onPressed: () => print("Button 4 pressed")),
-        RoundedButton(label: "Button 5", onPressed: () => print("Button 5 pressed")),
-        RoundedButton(label: "Button 6", onPressed: () => print("Button 6 pressed")),
-      ],
-    );
-  }
-}
-
-class RoundedButton extends StatelessWidget {
-  final String label;
-  final Function onPressed;
-
-  RoundedButton({required this.label, required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 150, // Adjust button width as needed
-      height: 50, // Adjust button height as needed
-      child: ElevatedButton(
-        onPressed: () => onPressed(),
-        child: Text(label, style: TextStyle(fontSize: 16)),
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0), // Adjust border radius for rounded corners
-          ),
-        ),
-      ),
-    );
-  }
-}*/
-
-
-
-
-//import 'package:flutter/gestures.dart';
-//import 'dart:html';
-
-//import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -87,20 +17,6 @@ void main() {
   runApp( HealthApp());
 }
 
-/*class HealthApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Your App Title'),
-        ),
-        body: AppsBottomNavigationBar(), // Add your bottom navigation bar here
-      ),
-    );
-  }
-}*/
 class HealthApp extends StatelessWidget {
    HealthApp({Key? key}) : super(key: key);
 
@@ -112,7 +28,7 @@ class HealthApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Health Tips'),
-          backgroundColor: Colors.amber[800],
+          backgroundColor: Colors.green[900],
         ),
         //body: SafeArea(child: HomeScreen()),
         body: Padding(
@@ -127,7 +43,7 @@ class HealthApp extends StatelessWidget {
                 height: 65,
                 child: DrawerHeader(
                   decoration: BoxDecoration(
-                    color: Colors.amber[800],
+                    color: Colors.green[900],
                   ),              
                   child: const Text(
                     'Health Tips',
@@ -202,7 +118,7 @@ class _BottomNavigationBarState extends State<AppsBottomNavigationBar> {
         ],
         currentIndex: _selectedIndex,
         
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.green[900],
         selectedIconTheme: const IconThemeData(size: 30),
         //unselectedIconTheme: const IconThemeData(size: 24),
         onTap: _onItemTapped,
@@ -278,7 +194,7 @@ class ArticlesTips extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         title: Text('Articles and Tips'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -323,7 +239,7 @@ class _NutritionTipsState extends State<NutritionTips> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Nutrition Tips'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -411,7 +327,7 @@ class _SleepHygieneState extends State<SleepHygiene> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Sleep Hygiene'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -491,63 +407,6 @@ class _SleepHygieneState extends State<SleepHygiene> {
 }
   
 
-/*class NutritionTips extends StatelessWidget {
-  // NutritionTips({Key? key}) : super(key: key);
-
-  /*final List<String> images = [
-    'assets/bg_image.jpg',
-    'assets/plate.webp',
-    //'assets/image3.jpg',
-    // Add more images as needed
-  ];*/
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Nutrition Tips'),
-        backgroundColor: Colors.amber[800],
-      ),
-      body: SingleChildScrollView(
-        child: PhotoView(
-          imageProvider: AssetImage('assets/bg_image.jpg')
-        ),
-        /*child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              PhotoViewGallery.builder(
-                itemCount: images.length,
-                builder: (context, index) {
-                  return PhotoViewGalleryPageOptions(
-                    imageProvider: AssetImage(images[index]),
-                    minScale: PhotoViewComputedScale.contained * 0.8,
-                    maxScale: PhotoViewComputedScale.covered * 2,
-                    // enableRotation: true,
-                  );
-                },
-                scrollPhysics: BouncingScrollPhysics(),
-                backgroundDecoration: BoxDecoration(
-                  color: Colors.black,
-                ),
-                pageController: PageController(),
-              ),
-              const SizedBox(height: 16.0),
-              const SelectableText(
-                'Proper nutrition helps keep energy levels up and protects against many age-related illnesses and diseases like heart disease, cancer, and diabetes.\n'
-                'At the most basic level, nutrition is about eating a regular, balanced diet. Good nutrition helps fuel your body. The foods you eat supply the nutrients your body needs to maintain your brain, muscle, bone, nerves, skin, blood circulation, and immune system. Proper nutrition also helps protect you from illness and disease, such as heart disease, diabetes, cancer, and osteoporosis.',
-                style: TextStyle(fontSize: 18),
-                textAlign: TextAlign.justify,
-              ),
-            ],
-          ),
-        ),*/
-      ),
-    );
-  }
-}*/
-
 class FirstAidbasics extends StatelessWidget {
   final List<String> categories = [
     'Cardiopulmonary resuscitation (CPR)',
@@ -565,7 +424,7 @@ class FirstAidbasics extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('First Aid Basics'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -615,7 +474,7 @@ class _CardioResState extends State<CardioRes> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('CPR'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -903,7 +762,7 @@ class _BleedingandWoundCareState extends State<BleedingandWoundCare> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Bledding and Wound Care'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -1020,7 +879,7 @@ class _ChokingState extends State<Choking> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Choking'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -1217,7 +1076,7 @@ class _FirstAidKitEssentialsState extends State<FirstAidKitEssentials> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('First Aid Kits'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -1329,136 +1188,12 @@ class WellnessQuotes extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         title: Text('Wellness Quotes'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
     );
   }
 
 }
-
-/*class MyTabController extends StatefulWidget {
-  const MyTabController({Key? key}) : super(key: key);
-
-  @override
-  MyTabControllerState createState() => MyTabControllerState();
-}
-class MyTabControllerState extends State<MyTabController>
-  with SingleTickerProviderStateMixin {
-  // We need a TabController to control the selected tab programmatically
-  late final _tabController = TabController(length: 2, vsync: this);
-
-  @override
-
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: (){
-              //Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchBarApp()));
-            }, 
-            icon: Icon(Icons.search)),
-        ],
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: const <Widget>[
-            Tab(
-              icon: Icon(Icons.home, color: Colors.white),
-              text: 'HOME',
-            ),
-            Tab(
-              icon: Icon(Icons.health_and_safety, color: Colors.white),
-              text: 'Health A-Z',
-            ),            
-          ],
-        ),
-      ),
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          HomeScreen(
-            //onPressed: () => _tabController.index = 1,
-          ),
-          HealthAtoZ(
-            // onNext: () => _tabController.index = 2,
-          ),   
-        ],
-      ),
-    );
-  } 
-}*/
-
-/*class SearchBarApp extends StatefulWidget {
-  const SearchBarApp({super.key});
-
-  @override
-  State<SearchBarApp> createState() => _SearchBarAppState();
-}
-
-class _SearchBarAppState extends State<SearchBarApp> {
-  bool isDark = false;
-
-  @override
-  Widget build(BuildContext context) {
-    final ThemeData themeData = ThemeData(
-        useMaterial3: true,
-        brightness: isDark ? Brightness.dark : Brightness.light);
-
-    return MaterialApp(
-      theme: themeData,
-      home: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SearchAnchor(
-              builder: (BuildContext context, SearchController controller) {
-            return SearchBar(
-              controller: controller,
-              padding: const MaterialStatePropertyAll<EdgeInsets>(
-                  EdgeInsets.symmetric(horizontal: 16.0)),
-              onTap: () {
-                controller.openView();
-              },
-              onChanged: (_) {
-                controller.openView();
-              },
-              leading: const Icon(Icons.search),
-              trailing: <Widget>[
-                Tooltip(
-                  message: 'Change brightness mode',
-                  child: IconButton(
-                    isSelected: isDark,
-                    onPressed: () {
-                      setState(() {
-                        isDark = !isDark;
-                      });
-                    },
-                    icon: const Icon(Icons.wb_sunny_outlined),
-                    selectedIcon: const Icon(Icons.brightness_2_outlined),
-                  ),
-                )
-              ],
-            );
-          }, suggestionsBuilder:
-                  (BuildContext context, SearchController controller) {
-            return List<ListTile>.generate(5, (int index) {
-              final String item = 'item $index';
-              return ListTile(
-                title: Text(item),
-                onTap: () {
-                  setState(() {
-                    controller.closeView(item);
-                  });
-                },
-              );
-            });
-          }),
-        ),
-      ),
-    );
-  }
-}*/
-
-
 
 class HealthAtoZ extends StatelessWidget {
   final List<String> letters = List.generate(26, (index) => String.fromCharCode('A'.codeUnitAt(0) + index));
@@ -1533,7 +1268,7 @@ class HealthAtoZ extends StatelessWidget {
               }              
                 // Your navigation logic here
               },
-              buttonColor: Colors.amber,
+              buttonColor: Colors.green,
             ),
           ),
         );
@@ -1800,7 +1535,7 @@ class HealthA extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health A'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -1813,7 +1548,7 @@ class HealthA extends StatelessWidget {
               subtitle: Text('Tap for info'),
               onTap: () {
                 if(index == 0){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>FrozenShoulder()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>AbdominalPain()));
                 }
                 
                 // Add navigation or detailed information for each category
@@ -1824,6 +1559,128 @@ class HealthA extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class AbdominalPain extends StatefulWidget {
+  @override
+  _AbdominalPainState createState() => _AbdominalPainState();
+}
+
+class _AbdominalPainState extends State<AbdominalPain> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Abdominal Pain'),
+        backgroundColor: Colors.green[900],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: '\nAbdominal Pain\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'Everyone experiences abdominal pain from time to time. Other terms used to describe abdominal pain are stomachache, tummy ache, gut ache and bellyache. Abdominal pain can be mild or severe. It may be constant or come and go. Abdominal pain can be short-lived, also called acute. It also may occur over weeks, months or years, also known as chronic.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nCauses\n'
+                    ),
+                    TextSpan(
+                      text: '\nAbdominal pain can have many causes. The most common causes usually are not serious, such as gas pains, indigestion or a pulled muscle. Other conditions may need urgent medical attention.'
+                      '\nThe location and pattern of abdominal pain can provide important clues, but how long it lasts is especially useful when figuring out its cause.\n'
+                      'Acute abdominal pain develops and often goes away over a few hours to a few days. Chronic abdominal pain may come and go. This type of pain may be present for weeks to months, or even years. Some chronic conditions cause progressive pain, which steadily gets worse over time.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal
+                      )
+                    ),                    
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/symptoms/abdominal-pain/basics/causes/sym-20050728',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
     );
   }
 }
@@ -1839,7 +1696,7 @@ class HealthB extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health B'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -1852,7 +1709,7 @@ class HealthB extends StatelessWidget {
               subtitle: Text('Tap for info'),
               onTap: () {
                 if(index == 0){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>FrozenShoulder()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>BackPain()));
                 }
                 
                 // Add navigation or detailed information for each category
@@ -1863,6 +1720,151 @@ class HealthB extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class BackPain extends StatefulWidget {
+  @override
+  _BackPainState createState() => _BackPainState();
+}
+
+class _BackPainState extends State<BackPain> {
+  int currentImageIndex = 0;
+  List<String> imagePaths = [
+    "assets/fake.jpg",
+    "assets/wirral-first-aid.webp", // Add more image paths as needed
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Back Pain'),
+        backgroundColor: Colors.green[900],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[index]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                    }
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const SelectableText.rich(   
+                TextSpan(
+                  text: '\nSymptoms\n\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children:<TextSpan>[
+                    TextSpan(
+                      text:
+                      'Back pain can range from a muscle aching to a shooting, burning or stabbing sensation. Also, the pain can radiate down a leg. Bending, twisting, lifting, standing or walking can make it worse.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '\nCauses\n'
+                    ),
+                    TextSpan(
+                      text: '\nBack pain often develops without a cause that shows up in a test or imaging study. Conditions commonly linked to back pain include:'
+                      '\n--> Muscle or ligament strain. Repeated heavy lifting or a sudden awkward movement can strain back muscles and spinal ligaments. For people in poor physical condition, constant strain on the back can cause painful muscle spasms.\n'
+                      '--> Bulging or ruptured disks. Disks act as cushions between the bones in the spine. The soft material inside a disk can bulge or rupture and press on a nerve. However, a bulging or ruptured disk might not cause back pain. Disk disease is often found on spine X-rays, CT scans or MRIs done for another reason.\n'
+                      '--> Arthritis. Osteoarthritis can affect the lower back. In some cases, arthritis in the spine can lead to a narrowing of the space around the spinal cord, a condition called spinal stenosis.\n'
+                      '--> Osteoporosis. The spines vertebrae can develop painful breaks if the bones become porous and brittle.\n'
+                      '--> Ankylosing spondylitis, also called axial spondyloarthritis. This inflammatory disease can cause some of the bones in the spine to fuse. This makes the spine less flexible.'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal
+                      )
+                    ),
+                    TextSpan(
+                      text: '\nPrevention\n'
+                    ),
+                    TextSpan(
+                      text: '\nImproving ones physical condition and learning and practicing how to use the body might help prevent back pain.\n'
+                      '\nTo keep the back healthy and strong:\n'
+                      '\n--> Exercise. Regular low-impact aerobic activities — those that do not strain or jolt the back — can increase strength and endurance in the back and allow the muscles to work better. Walking, bicycling and swimming are good choices. Talk with your health care provider about which activities to try.\n'
+                      '--> Build muscle strength and flexibility. Abdominal and back muscle exercises, which strengthen the core, help condition these muscles so that they work together to support the back.\n'
+                      '--> Maintain a healthy weight. Being overweight strains back muscles.\n'
+                      '--> Quit smoking. Smoking increases the risk of low back pain. The risk increases with the number of cigarettes smoked per day, so quitting should help reduce this risk.\n'
+                      '\nAvoid movements that twist or strain the back. To use the body properly:\n'
+                      '--> Stand smart. Do not slouch. Maintain a neutral pelvic position. When standing for long periods, place one foot on a low footstool to take some of the load off the lower back. Alternate feet. Good posture can reduce the stress on back muscles.\n'
+                      '--> Sit smart. Choose a seat with good lower back support, armrests and a swivel base. Placing a pillow or rolled towel in the small of the back can maintain its normal curve. Keep knees and hips level. Change position frequently, at least every half-hour.'
+                      '--> Lift smart. Avoid heavy lifting, if possible. If you must lift something heavy, let your legs do the work. Keep your back straight — no twisting — and bend only at the knees. Hold the load close to your body. Find a lifting partner if the object is heavy or awkward.\n'
+                      ,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal
+                      )
+                    ), 
+                  ] 
+                ), 
+                textAlign: TextAlign.justify,
+              ),  
+            ),
+            SizedBox(
+              height: 300,
+              child: PhotoViewGallery.builder(
+                itemCount: imagePaths.length,
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(imagePaths[1]),
+                    minScale: PhotoViewComputedScale.contained,
+                    maxScale: PhotoViewComputedScale.covered * 2,
+                    basePosition: Alignment.center,
+                  );
+                },
+                scrollPhysics: const BouncingScrollPhysics(),
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                pageController: PageController(initialPage: currentImageIndex),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentImageIndex = index;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const SelectableText.rich(
+                TextSpan(
+                  text: '\n[Reference: https://www.mayoclinic.org/diseases-conditions/back-pain/symptoms-causes/syc-20369906',
+                ), 
+              ),
+            ), 
+          ],
+        ),
+      ),     
     );
   }
 }
@@ -1916,7 +1918,7 @@ class HealthB extends StatelessWidget {
 
 class HealthC extends StatelessWidget {
   final List<String> categories = [
-    'Chest Pain',    
+    'Chest Pain',
     
   ];
 
@@ -1925,7 +1927,7 @@ class HealthC extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health C'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -1967,7 +1969,7 @@ class HealthD extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health D'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -2017,7 +2019,7 @@ class _DengueFeverState extends State<DengueFever> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dengue Fever'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -2182,7 +2184,7 @@ class HealthE extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health E'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -2226,7 +2228,7 @@ class _EarInfectionState extends State<EarInfection> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Ear Infection'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -2377,7 +2379,7 @@ class HealthF extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health F'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -2421,7 +2423,7 @@ class _FrozenShoulderState extends State<FrozenShoulder> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Frozen Shoulder'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -2555,8 +2557,8 @@ class HealthH extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Health O'),
-        backgroundColor: Colors.amber[800],
+        title: Text('Health H'),
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -2599,7 +2601,7 @@ class _HeartAttackState extends State<HeartAttack> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Heart Attack'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -2748,8 +2750,8 @@ class HealthI extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Health O'),
-        backgroundColor: Colors.amber[800],
+        title: Text('Health I'),
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -2793,7 +2795,7 @@ class _InsomniaState extends State<Insomnia> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Insomnia'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -2944,8 +2946,8 @@ class HealthK extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Health O'),
-        backgroundColor: Colors.amber[800],
+        title: Text('Health K'),
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -2989,7 +2991,7 @@ class _KidneyDiseaseState extends State<KidneyDisease> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Kidney Disease'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -3144,7 +3146,7 @@ class HealthL extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health L'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -3188,7 +3190,7 @@ class _LowBloodPressureState extends State<LowBloodPressure> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Low blood pressure (hypotension)'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -3387,7 +3389,7 @@ class HealthM extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health M'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -3431,7 +3433,7 @@ class _MumpsState extends State<Mumps> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Mumps'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -3571,7 +3573,7 @@ class HealthN extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health N'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
         itemCount: categories.length,
@@ -3614,7 +3616,7 @@ class _NeckPainState extends State<NeckPain> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Neck Pain'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -3756,7 +3758,7 @@ class HealthO extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health O'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -3799,7 +3801,7 @@ class _OralHealthState extends State<OralHealth> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Oral Health'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -3910,7 +3912,7 @@ class HealthP extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health P'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -3954,7 +3956,7 @@ class _PneumoniaState extends State<Pneumonia> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pneumonia'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -4101,15 +4103,15 @@ class _PneumoniaState extends State<Pneumonia> {
 
 class HealthQ extends StatelessWidget {
   final List<String> categories = [
-    'Oral Health',    
+    'QQQ',    
     
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Health O'),
-        backgroundColor: Colors.amber[800],
+        title: Text('Health Q'),
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -4122,7 +4124,7 @@ class HealthQ extends StatelessWidget {
               subtitle: Text('Tap for info'),
               onTap: () {
                 if(index == 0){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>OralHealth()));
+                  //Navigator.push(context, MaterialPageRoute(builder: (context)=>OralHealth()));
                 }
                 
                 // Add navigation or detailed information for each category
@@ -4138,15 +4140,15 @@ class HealthQ extends StatelessWidget {
 }
 class HealthR extends StatelessWidget {
   final List<String> categories = [
-    'Oral Health',    
+    'RRR',    
     
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Health O'),
-        backgroundColor: Colors.amber[800],
+        title: Text('Health R'),
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -4159,7 +4161,7 @@ class HealthR extends StatelessWidget {
               subtitle: Text('Tap for info'),
               onTap: () {
                 if(index == 0){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>OralHealth()));
+                  //Navigator.push(context, MaterialPageRoute(builder: (context)=>OralHealth()));
                 }
                 
                 // Add navigation or detailed information for each category
@@ -4184,7 +4186,7 @@ class HealthS extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health S'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -4228,7 +4230,7 @@ class _SchizophreniaState extends State<Schizophrenia> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Schizophrenia'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -4385,8 +4387,8 @@ class HealthT extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Health S'),
-        backgroundColor: Colors.amber[800],
+        title: Text('Health T'),
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -4429,7 +4431,7 @@ class _TyphoidFeverState extends State<TyphoidFever> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Typhoid Fever'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -4626,7 +4628,7 @@ class HealthU extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health U'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -4670,7 +4672,7 @@ class _UlcerativeColitisState extends State<UlcerativeColitis> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Ulcerative Colitis'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -4837,7 +4839,7 @@ class HealthV extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health V'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -4850,7 +4852,7 @@ class HealthV extends StatelessWidget {
               subtitle: Text('Tap for info'),
               onTap: () {
                 if(index == 0){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>UlcerativeColitis()));
+                  //Navigator.push(context, MaterialPageRoute(builder: (context)=>UlcerativeColitis()));
                 }
                 
                 // Add navigation or detailed information for each category
@@ -4874,7 +4876,7 @@ class HealthW extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health W'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -4918,7 +4920,7 @@ class _WaterState extends State<Water> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Water'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -5093,7 +5095,7 @@ class HealthX extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health X'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -5106,7 +5108,7 @@ class HealthX extends StatelessWidget {
               subtitle: Text('Tap for info'),
               onTap: () {
                 if(index == 0){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>UlcerativeColitis()));
+                  //Navigator.push(context, MaterialPageRoute(builder: (context)=>UlcerativeColitis()));
                 }
                 
                 // Add navigation or detailed information for each category
@@ -5130,7 +5132,7 @@ class HealthY extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health Y'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -5173,8 +5175,8 @@ class _YellowFeverState extends State<YellowFever> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ulcerative Colitis'),
-        backgroundColor: Colors.amber[800],
+        title: const Text('Yellow Fever'),
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -5352,7 +5354,7 @@ class HealthZ extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Health Z'),
-        backgroundColor: Colors.amber[800],
+        backgroundColor: Colors.green[900],
       ),
       body: ListView.builder(        
 
@@ -5395,8 +5397,8 @@ class _ZikaVirusState extends State<ZikaVirus> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ulcerative Colitis'),
-        backgroundColor: Colors.amber[800],
+        title: const Text('Zika Virus'),
+        backgroundColor: Colors.green[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -5591,175 +5593,6 @@ class SubcategoryScreen extends StatelessWidget {
     );
   }
 }
-/*class SubcategoryListOfVitamin extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 100.0, // Adjust the height as needed
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: [
-          RoundedButton(
-            text: "Vitamin A",
-            //Image.asset('name'),
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>VitaminA()));
-            },
-            buttonColor: Colors.red,
-            //maxSize: 60,
-            //minSize: 40,
-            
-          
-          ),
-
-          RoundedButton(
-            text: "Vitamin B",
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>VitaminB()));
-            
-            },
-            buttonColor: Colors.green,
-            //maxSize: 60,
-            //minSize: 40,
-          ),
-
-          RoundedButton(text: "Vitamin C", onPressed: () => print("Button 3 pressed"), buttonColor: Colors.blue,/*maxSize: 60,minSize: 40,*/),
-          RoundedButton(text: "Vitamin D", onPressed: () => print("Button 4 pressed"), buttonColor: Colors.orange,/*maxSize: 60,minSize: 40,*/),
-          RoundedButton(text: "Vitamin E", onPressed: () => print("Button 5 pressed"), buttonColor: Colors.purple,/*maxSize: 60,minSize: 40,*/),
-          RoundedButton(text: "Vitamin K", onPressed: () => print("Button 6 pressed"), buttonColor: Colors.teal,/*maxSize: 60,minSize: 40,*/),
-        ],
-      ),
-    );
-  }
-}*/
-
-/*class BloodPressureButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ExpansionTile(
-      title: Card(
-        elevation: 4, // Add elevation for a card-like appearance
-        margin: EdgeInsets.all(8.0), // Add margin for spacing
-        child: Column(
-          children: <Widget>[
-            ListTile(
-              tileColor: Colors.cyan.withOpacity(0.6), // Transparent background color
-              title: Text(
-                "Blood Pressure",
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.black,
-                ),
-              ),
-              onTap: () {
-                // Handle what happens when the "Vitamin" card is pressed
-              },
-            ),
-            Image.asset(
-              'assets/bg_image.jpg', // Replace with your image path
-              width: double.infinity, // Set the image width to fill the card
-              height: 200.0, // Set the image height as needed
-              fit: BoxFit.cover, // Adjust the fit as needed
-            ),
-          ],
-        ),
-      ),
-      children: [
-        SubcategoryListOfVitamin(),
-      ],
-    );
-  }
-}*/
-/*class BloodPressureButton extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    return ExpansionTile(
-      /*title: RoundedButton(
-        text: 'Blood Pressure',
-        onPressed: () {
-
-        }, buttonColor: Colors.amberAccent,
-      )*/
-      title: MenuButton(
-        text: "Blood Pressure",
-        onPressed: () {
-          // Handle what happens when the "Vitamin" button is pressed
-        },
-        buttonColor: Colors.green,
-      ),
-      children: [
-        SubcategoryListOfVitamin(),
-      ],
-    );
-  }
-
-}*/
-////
-/*class VitaminButton extends StatelessWidget {
-  const VitaminButton({super.key});
-  
-  @override
-  Widget build(BuildContext context) {
-    return RoundedButton(
-      text: 'Vitamin', 
-      onPressed: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>const RoundedButtons()));
-      }, 
-      buttonColor: Colors.red,
-    );
-  }
-}*/
-
-/*class RoundedButton extends StatelessWidget {
-  final String text;
-  final VoidCallback onPressed;
-  final Color buttonColor;
-  final double maxSize; // Specify the maximum size
-  final double minSize; // Specify the minimum size
-
-  const RoundedButton({
-    required this.text,
-    required this.onPressed,
-    required this.buttonColor,
-    required this.minSize,
-    required this.maxSize,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
-    // Calculate the button size based on screen width while keeping it within the max and min bounds
-    final buttonSize = screenWidth < minSize ? minSize : screenWidth > maxSize ? maxSize : screenWidth;
-
-    return Transform.rotate(
-      angle: -pi / 90.0, // Rotate each button by 30 degrees (pi/6)
-      child: Container(
-        //width: buttonSize,
-        //height: buttonSize,
-        child: ElevatedButton(
-          onPressed: onPressed,
-          style: ElevatedButton.styleFrom(
-            shape: CircleBorder(), // Make the button circular
-            backgroundColor: buttonColor, // Set the background color
-          ),
-          child: Center(
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                text,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black87,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}*/
 
 
 class CustomOutlinedButton extends StatelessWidget {
@@ -5867,123 +5700,6 @@ class MenuButton extends StatelessWidget {
 }
 
 
-/////
-/*class RoundedButtons extends StatelessWidget {
-  const RoundedButtons({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Wrap(
-        spacing: 20.0, // Adjust the spacing between buttons
-        runSpacing: 20.0, // Adjust the spacing between rows of buttons
-        alignment: WrapAlignment.center,
-        children: [
-          RoundedButton(
-            text: "Vitamin A",
-            //Image.asset('name'),
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>VitaminA()));
-            },
-            buttonColor: Colors.red,
-          
-          ),
-
-          RoundedButton(
-            text: "Vitamin B",
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>VitaminB()));
-            
-            },
-            buttonColor: Colors.green,
-          ),
-
-          RoundedButton(text: "Vitamin C", onPressed: () => print("Button 3 pressed"), buttonColor: Colors.blue),
-          RoundedButton(text: "Vitamin D", onPressed: () => print("Button 4 pressed"), buttonColor: Colors.orange),
-          RoundedButton(text: "Vitamin E", onPressed: () => print("Button 5 pressed"), buttonColor: Colors.purple),
-          RoundedButton(text: "Vitamin K", onPressed: () => print("Button 6 pressed"), buttonColor: Colors.teal),
-        ],
-      ),
-    );
-  }
-}*/
-
-/*class RoundedButtons extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        RoundedButton(
-          text: "Vitamin A",
-        //  Image.asset('name'),
-          onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>VitaminA()));
-          },
-          buttonColor: Colors.red,
-          
-        ),
-            
-        RoundedButton(
-          text: "Vitamin B",
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>VitaminB()));
-            
-          },
-          buttonColor: Colors.red,
-        ),
-        
-        
-        RoundedButton(text: "Vitamin C", onPressed: () => print("Button 3 pressed")),
-        RoundedButton(text: "Vitamin D", onPressed: () => print("Button 4 pressed")),
-        RoundedButton(text: "Vitamin E", onPressed: () => print("Button 5 pressed")),
-        RoundedButton(text: "Vitamin K", onPressed: () => print("Button 6 pressed")),
-      ],
-    );
-  }
-}
-
-class RoundedButton extends StatelessWidget {
-  final String text;
-  final Function onPressed;
-  final Color buttonColor;
-  
-
-  RoundedButton({
-    required this.text,
-    required this.onPressed,
-    this.buttonColor = Colors.blue, //default color is blue
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-        child: Center(
-          child: ElevatedButton(
-            onPressed: () => onPressed(),
-            
-            child: Text(
-              text,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,)
-            ),
-            
-            style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0), 
-              ),
-              minimumSize: Size(150, 50.0),
-              backgroundColor: buttonColor,
-            ),
-            
-            
-          ),
-        ),
-    );
-  }
-}*/
 
 class VitaminA extends StatelessWidget{
   const VitaminA({super.key});
